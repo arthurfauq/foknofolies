@@ -1,3 +1,5 @@
-# FoknoFolies #1
+# FoknoFolies
 
-Code source du site web de la première édition des FoknoFolies.
+Code source du site de la première édition des FoknoFolies.
+
+[www.foknofolies.com](www.foknofolies.com)

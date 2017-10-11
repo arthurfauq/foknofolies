@@ -1,9 +1,9 @@
 <?php
 
-require 'config/db.php';
+require 'dbconfig.php';
 
 function checkuser($ffname){
-	$result = mysql_query("SELECT * FROM User WHERE nom='$ffname'");
+    $result = mysql_query("select * from Participants where name='$ffname'");
 	$response = mysql_num_rows($result);
 
 	$_SESSION['PARTICIPANT'] = false; 
