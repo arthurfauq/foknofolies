@@ -15,8 +15,8 @@
 
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="css/vendor.min.css">
-    <link rel="stylesheet" href="css/main.min.css">
+    <link rel="stylesheet" href="assets/css/vendor.min.css">
+    <link rel="stylesheet" href="assets/css/main.min.css">
 </head>
 
 <body>
@@ -24,7 +24,7 @@
 if (!$_SESSION['FULLNAME']) { ?>
     <div class="container-fluid flexbox">
         <div class="v-align">
-            <img src="./images/logo-foknofolies.jpg" alt="Logo FoknoFolies" class="logo">
+            <img src="./assets/images/logo-foknofolies.jpg" alt="Logo FoknoFolies" class="logo">
             <a class="btn btn-social btn-facebook socialButton" id="facebookConnect" href="login.php">
                 <span class="fa fa-facebook"></span> Se connecter avec Facebook
             </a>
@@ -35,12 +35,12 @@ if (!$_SESSION['FULLNAME']) { ?>
             </div>
         </div>
     </div>
-    <script src="js/facebook.min.js"></script>
+    <script src="assets/js/facebook.min.js"></script>
 <?php } else { 
     if (!$_SESSION['PARTICIPANT'] || $_SESSION['PARTICIPANT'] == false) { ?>
         <div class="container-fluid flexbox">
             <div class="v-align">
-                <img src="./images/logo-foknofolies.jpg" alt="Logo FoknoFolies" class="logo">
+                <img src="./assets/images/logo-foknofolies.jpg" alt="Logo FoknoFolies" class="logo">
                  <div class="section-content">
                     <div class="description-zone">
                         <p class="description-text">Sauf erreur de notre part, vous ne participez pas aux FoknoFolies.</p>
@@ -126,9 +126,9 @@ if (!$_SESSION['FULLNAME']) { ?>
 
     <div id="full-page">
         <div class="section" id="accueil-section" data-anchor="accueil">
-            <img data-src="./images/background-reverse-small.png" data-srcset="./images/background-reverse-big.png 1100w" alt="Background Image" class="background-image animated">
+            <img data-src="./assets/images/background-reverse-small.png" data-srcset="./assets/images/background-reverse-big.png 1100w" alt="Background Image" class="background-image animated">
             <div class="container-fluid flexbox">
-                <img src="./images/logo-foknofolies-trace.png" alt="Logo FoknoFolies Tracé">
+                <img src="./assets/images/logo-foknofolies-trace.png" alt="Logo FoknoFolies Tracé">
                 <div class="section-content h-align">
                     <div class="info-box">
                         <p>8 - 9</p>
@@ -140,7 +140,7 @@ if (!$_SESSION['FULLNAME']) { ?>
                         <h2>Édition #2</h2>
                     </div>
                     <div class="info-box">
-                        <p>J - <span id="remaining-days">0</span></p>
+                        <p>J <span id="remaining-days">- 0</span></p>
                     </div>
                 </div>
             </div>
@@ -167,7 +167,7 @@ if (!$_SESSION['FULLNAME']) { ?>
                 <div class="section-content">
                     <h2>Programme</h2>
                     <div class="slide description-zone fp-auto-height" data-anchor="programme-samedi-aprem">
-                        <img src="./images/icons/target.svg" alt="Target Icon" class="description-icon">
+                        <img src="./assets/images/icons/target.svg" alt="Target Icon" class="description-icon">
                         <hr class="fadeRight">
                         <p class="description-title">Samedi après-midi</p>
                         <hr class="fadeLeft">
@@ -175,7 +175,7 @@ if (!$_SESSION['FULLNAME']) { ?>
                             les joueurs les plus expérimentés de La Boulaie.</p>
                     </div>
                     <div class="slide description-zone fp-auto-height" data-anchor="programme-samedi-soir">
-                        <img src="./images/icons/rocket.svg" alt="Doughnut Icon" class="description-icon">
+                        <img src="./assets/images/icons/rocket.svg" alt="Doughnut Icon" class="description-icon">
                         <hr class="fadeRight">
                         <p class="description-title">Samedi soir</p>
                         <hr class="fadeLeft">
@@ -186,7 +186,7 @@ if (!$_SESSION['FULLNAME']) { ?>
                         </div>
                     </div>
                     <div class="slide description-zone fp-auto-height" data-anchor="programme-musical">
-                        <img src="./images/icons/levels.svg" alt="Doughnut Icon" class="description-icon">
+                        <img src="./assets/images/icons/levels.svg" alt="Doughnut Icon" class="description-icon">
                         <hr class="fadeRight">
                         <p class="description-title">Programme musical</p>
                         <hr class="fadeLeft">
@@ -194,7 +194,7 @@ if (!$_SESSION['FULLNAME']) { ?>
                         <iframe class="playlist hidden-xs" src="https://open.spotify.com/embed/user/117752901/playlist/5kLzwZLJpX8QizZP5ppe70" width="300" frameborder="0" allowtransparency="true"></iframe>
                     </div>
                     <div class="slide description-zone fp-auto-height" data-anchor="programme-dimanche">
-                        <img src="./images/icons/doughnut.svg" alt="Doughnut Icon" class="description-icon">
+                        <img src="./assets/images/icons/doughnut.svg" alt="Doughnut Icon" class="description-icon">
                         <hr class="fadeRight">
                         <p class="description-title">Dimanche</p>
                         <hr class="fadeLeft">
@@ -218,25 +218,25 @@ if (!$_SESSION['FULLNAME']) { ?>
             <div class="container-fluid flexbox">
                 <div class="section-content">
                     <h2>Gallerie</h2>
-                    <p class="sub-title">Aperçu de la première édition...</p>
+                    <p class="sub-title">Aperçu de la première édition</p>
                     <div class="owl-container">
                         <div class="owl-carousel">
-                            <img class="owl-lazy" data-src="./images/gallerie/image-1-min.jpg" alt="Slide image - House">
-                            <img class="owl-lazy" data-src="./images/gallerie/image-2-min.jpg" alt="Slide image - House">
-                            <img class="owl-lazy" data-src="./images/gallerie/image-3-min.jpg" alt="Slide image - House">
-                            <img class="owl-lazy" data-src="./images/gallerie/image-4-min.jpg" alt="Slide image - House">
-                            <img class="owl-lazy" data-src="./images/gallerie/image-5-min.jpg" alt="Slide image - House">
-                            <img class="owl-lazy" data-src="./images/gallerie/image-6-min.jpg" alt="Slide image - House">
-                            <img class="owl-lazy" data-src="./images/gallerie/image-7-min.jpg" alt="Slide image - House">
-                            <img class="owl-lazy" data-src="./images/gallerie/image-8-min.jpg" alt="Slide image - House">
-                            <img class="owl-lazy" data-src="./images/gallerie/image-9-min.jpg" alt="Slide image - House">
-                            <img class="owl-lazy" data-src="./images/gallerie/image-10-min.jpg" alt="Slide image - House">
-                            <img class="owl-lazy" data-src="./images/gallerie/image-11-min.jpg" alt="Slide image - House">
-                            <img class="owl-lazy" data-src="./images/gallerie/image-12-min.jpg" alt="Slide image - House">
-                            <img class="owl-lazy" data-src="./images/gallerie/image-13-min.jpg" alt="Slide image - House">
-                            <img class="owl-lazy" data-src="./images/gallerie/image-14-min.jpg" alt="Slide image - House">
-                            <img class="owl-lazy" data-src="./images/gallerie/image-15-min.jpg" alt="Slide image - House">
-                            <img class="owl-lazy" data-src="./images/gallerie/image-16-min.jpg" alt="Slide image - House">
+                            <img class="owl-lazy" data-src="./assets/images/gallerie/image-1-min.jpg" alt="Slide image - House">
+                            <img class="owl-lazy" data-src="./assets/images/gallerie/image-2-min.jpg" alt="Slide image - House">
+                            <img class="owl-lazy" data-src="./assets/images/gallerie/image-3-min.jpg" alt="Slide image - House">
+                            <img class="owl-lazy" data-src="./assets/images/gallerie/image-4-min.jpg" alt="Slide image - House">
+                            <img class="owl-lazy" data-src="./assets/images/gallerie/image-5-min.jpg" alt="Slide image - House">
+                            <img class="owl-lazy" data-src="./assets/images/gallerie/image-6-min.jpg" alt="Slide image - House">
+                            <img class="owl-lazy" data-src="./assets/images/gallerie/image-7-min.jpg" alt="Slide image - House">
+                            <img class="owl-lazy" data-src="./assets/images/gallerie/image-8-min.jpg" alt="Slide image - House">
+                            <img class="owl-lazy" data-src="./assets/images/gallerie/image-9-min.jpg" alt="Slide image - House">
+                            <img class="owl-lazy" data-src="./assets/images/gallerie/image-10-min.jpg" alt="Slide image - House">
+                            <img class="owl-lazy" data-src="./assets/images/gallerie/image-11-min.jpg" alt="Slide image - House">
+                            <img class="owl-lazy" data-src="./assets/images/gallerie/image-12-min.jpg" alt="Slide image - House">
+                            <img class="owl-lazy" data-src="./assets/images/gallerie/image-13-min.jpg" alt="Slide image - House">
+                            <img class="owl-lazy" data-src="./assets/images/gallerie/image-14-min.jpg" alt="Slide image - House">
+                            <img class="owl-lazy" data-src="./assets/images/gallerie/image-15-min.jpg" alt="Slide image - House">
+                            <img class="owl-lazy" data-src="./assets/images/gallerie/image-16-min.jpg" alt="Slide image - House">
                         </div>
                     </div>
                 </div>
@@ -244,27 +244,27 @@ if (!$_SESSION['FULLNAME']) { ?>
         </div>
 
         <div class="section" id="contact-section" data-anchor="contact">
-            <img data-src="./images/background-small.png" data-srcset="./images/background-big.png 1100w" alt="Background Image" class="background-image animated">
+            <img data-src="./assets/images/background-small.png" data-srcset="./assets/images/background-big.png 1100w" alt="Background Image" class="background-image animated">
             <div class="container-fluid flexbox">
                 <div class="section-content">
                     <h2>Contact</h2>
                     <div class="contact-zone">
                         <div class="description-zone">
-                            <img src="./images/camille.jpg" alt="Photo Camille" class="description-photo">
+                            <img src="./assets/images/camille.jpg" alt="Photo Camille" class="description-photo">
                             <div class="description-content">
                                 <p class="description-title">Camille Fauquenot</p>
                                 <a href="tel:06 67 95 29 42" class="description-text">06 67 95 29 42</a>
                             </div>
                         </div>
                         <div class="description-zone">
-                            <img src="./images/gaspard.jpg" alt="Photo Gaspard" class="description-photo">
+                            <img src="./assets/images/gaspard.jpg" alt="Photo Gaspard" class="description-photo">
                             <div class="description-content">
                                 <p class="description-title">Gaspard Fauquenot</p>
                                 <a href="tel:06 42 39 15 56" class="description-text">06 42 39 15 56</a>
                             </div>
                         </div>
                         <div class="description-zone">
-                            <img src="./images/arthur.jpg" alt="Photo Arthur" class="description-photo">
+                            <img src="./assets/images/arthur.jpg" alt="Photo Arthur" class="description-photo">
                             <div class="description-content">
                                 <p class="description-title">Arthur Fauquenot</p>
                                 <a href="tel:06 37 17 08 87" class="description-text">06 37 17 08 87</a>
@@ -299,8 +299,8 @@ if (!$_SESSION['FULLNAME']) { ?>
         <li class="nav-link" data-menuanchor="contact"><a href='#contact'>Contact</a></li>
     </ul>
 
-    <script src="js/vendor.min.js"></script>
-    <script src="js/main.min.js"></script>
+    <script src="assets/js/vendor.min.js"></script>
+    <script src="assets/js/main.min.js"></script>
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBfBqq9AJCOsIRQ_B2iDDUWo3DPQodebFY"></script>
     <?php } 
     }
