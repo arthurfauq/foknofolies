@@ -33,14 +33,11 @@ const tryAPIGeolocation = () => {
     success: location => {
       pos = { lat: location.location.lat, lng: location.location.lng };
       renderRoute();
-    },
-    error: (XMLHttpRequest, textStatus, errorThrown) => {
-      console.log(XMLHttpRequest.responseJSON.error.message);
     }
   });
 };
 
-const handleLocationError = (browserHasGeolocation, error = null) => {
+const handleLocationError = browserHasGeolocation => {
   infoWindow.setPosition(map.getCenter());
   infoWindow.setContent(
     browserHasGeolocation
@@ -49,6 +46,7 @@ const handleLocationError = (browserHasGeolocation, error = null) => {
   );
 };
 
+// eslint-disable-next-line no-unused-vars
 const initMap = () => {
   const coords = { lat: 48.3, lng: 2.2 };
 
@@ -79,7 +77,7 @@ const initMap = () => {
         pos = { lat: position.coords.latitude, lng: position.coords.longitude };
         renderRoute();
       },
-      positionError => handleLocationError(true, positionError)
+      () => handleLocationError(true)
     );
   } else {
     handleLocationError(false);

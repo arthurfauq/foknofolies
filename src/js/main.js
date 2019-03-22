@@ -68,7 +68,7 @@ function initFullPage() {
         stagePadding: 25,
         nav: true,
         loop: true,
-        lazyload: true,
+        lazyLoad: true,
         lazyLoadEager: 2,
         autoWidth: true,
         autoHeight: true,
@@ -83,6 +83,7 @@ function initFullPage() {
         .find('.owl-nav')
         .css('opacity', 0);
 
+      // @ts-ignore
       carousel.waitForImages(() => {
         $('.owl-container')
           .find('.owl-nav')
@@ -93,9 +94,10 @@ function initFullPage() {
         $('.owl-container').css('background-image', 'none');
       });
 
+      // eslint-disable-next-line no-undef
       initMap();
     },
-    onLeave(n, e, o) {
+    onLeave(n, e) {
       for (
         let i = $('#logo-line')
             .find('svg')
@@ -149,7 +151,7 @@ function initFullPage() {
           .addClass('fadeInUp');
       }
     },
-    afterLoad(n, e) {
+    afterLoad() {
       const o = $('#programme-section.fp-section.active').find('.fp-slide.active');
       o.find('.description-text').addClass('fadeInUp');
       o.find('.description-title').addClass('fadeIn');
@@ -158,7 +160,7 @@ function initFullPage() {
       o.find('hr.fadeLeft').addClass('fadeInLeft');
       o.find('.description-icon').addClass('bounceIn');
     },
-    afterSlideLoad(n, e, o, i) {
+    afterSlideLoad() {
       const t = $('#programme-section.fp-section.active').find('.fp-slide.active');
       t.find('.description-text').addClass('fadeInUp');
       t.find('.description-title').addClass('fadeIn');

@@ -15,7 +15,7 @@
     "serve:dist": "gulp serve",
     "deploy": "npm run build && gh-pages -d dist",
     "lint": "eslint . --ignore-path .gitignore && stylelint \"src/**/*.scss\" && prettier --ignore-path .gitignore --check \"**/*.{html,css,scss,js,json,md}\"",
-    "lint:fix": "eslint . --ignore-path .gitignore --fix && stylelint \"src/**/*.scss\" --fix && prettier --ignore-path .gitignore --check \"**/*.{html,css,scss,js,json,md}\""
+    "lint:fix": "eslint . --ignore-path .gitignore --fix && stylelint \"src/**/*.scss\" --fix && prettier --ignore-path .gitignore --write \"**/*.{html,css,scss,js,json,md}\""
   },
   "husky": {
     "hooks": {
