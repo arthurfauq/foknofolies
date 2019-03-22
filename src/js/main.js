@@ -68,8 +68,6 @@ function initFullPage() {
         stagePadding: 25,
         nav: true,
         loop: true,
-        lazyLoad: true,
-        lazyLoadEager: 2,
         autoWidth: true,
         autoHeight: true,
         center: true,
