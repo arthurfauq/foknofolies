@@ -1,3 +1,7 @@
-# FoknoFolies #3
+# FoknoFolies
 
-Code source du site web de la troisième édition des FoknoFolies.
+> Code source du site web des FoknoFolies ([www.foknofolies.com](https://www.foknofolies.com))
+
+## License
+
+MIT

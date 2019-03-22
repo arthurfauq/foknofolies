@@ -1,0 +1,57 @@
+@keyframes animateLine {
+  0% {
+    opacity: 0;
+    stroke-dashoffset: 0;
+    stroke-dasharray: 110%;
+    transform: translate(100px);
+  }
+  25% {
+    opacity: 0.8;
+  }
+  45% {
+    stroke-dashoffset: 40%;
+    stroke-dasharray: 10%;
+  }
+  80% {
+    transform: translate(100px);
+    stroke-dashoffset: 0;
+    stroke-dasharray: 103.5%;
+  }
+  85% {
+    transform: translate(100px);
+    stroke-dashoffset: 0;
+    stroke-dasharray: 103.5%;
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-100px);
+    stroke-dasharray: 80.5%;
+  }
+}
+
+@keyframes particlesLine {
+  0% {
+    transform: translate(-150px);
+    stroke-dasharray: 10 1000;
+    stroke-dashoffset: 20%;
+  }
+  50% {
+    transform: translate(0);
+  }
+  100% {
+    opacity: 1;
+    stroke-dasharray: 500 0;
+  }
+}
+
+@keyframes scrollWay {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

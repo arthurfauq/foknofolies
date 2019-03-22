@@ -1,176 +1,157 @@
-const gulp = require('gulp')
-const gutil = require('gulp-util')
-const clean = require('gulp-clean')
-const cleanCSS = require('gulp-clean-css')
-const critical = require('critical').stream
-const purge = require('gulp-css-purge')
-const useref = require('gulp-useref')
-const eslint = require('gulp-eslint')
-const browserSync = require('browser-sync').create()
-const sass = require('gulp-sass')
-const uglify = require('gulp-uglify')
-const imagemin = require('gulp-imagemin')
-const autoprefixer = require('gulp-autoprefixer')
-const runSequence = require('run-sequence')
+const autoprefixer = require('gulp-autoprefixer');
+const babel = require('gulp-babel');
+const browserSync = require('browser-sync').create();
+const cssnano = require('gulp-cssnano');
+const del = require('del');
+const gulp = require('gulp');
+const gulpif = require('gulp-if');
+const gutil = require('gulp-util');
+const sass = require('gulp-sass');
+const sourcemaps = require('gulp-sourcemaps');
+const uglify = require('gulp-uglify');
+const useref = require('gulp-useref');
 
-var bases = {
-  app: './src/',
-  dist: './dist/'
-}
+const config = {
+  sourcemaps: './maps',
+  browserSync: {
+    baseDir: ['./', 'dist']
+  },
+  assets: {
+    src: ['src/assets/**/*', 'src/*.{ico,txt}'],
+    dest: 'dist'
+  },
+  fonts: {
+    src: 'src/fonts/**/*',
+    dest: 'dist/fonts'
+  },
+  images: {
+    src: 'src/img/**/*',
+    dest: 'dist/img'
+  },
+  html: {
+    src: 'src/index.html',
+    dest: 'dist'
+  },
+  sass: {
+    src: 'src/styles/**/*.scss',
+    dest: 'dist/css'
+  },
+  scripts: {
+    src: 'src/js/**/*.js',
+    dest: 'dist/js'
+  }
+};
 
-var paths = {
-  css: './css/**/*.css',
-  fonts: './fonts/**/*.*',
-  html: './*.html',
-  images: './images/**/*.*',
-  others: [
-    '.htaccess',
-    '*.txt'
-  ],
-  scripts: './js/**/*.js',
-  scss: './styles/scss/**/*.scss'
-}
+/**
+ * Clean dist directory
+ */
+const clean = () => del('dist');
 
-gulp.task('eslint', function () {
+/**
+ * Copy html files
+ */
+const copyHtml = () => gulp.src(config.html.src).pipe(gulp.dest(config.html.dest));
+
+/**
+ * Copy fonts
+ */
+const copyFonts = () => gulp.src(config.fonts.src).pipe(gulp.dest(config.fonts.dest));
+
+/**
+ * Copy images
+ */
+const copyImages = () => gulp.src(config.images.src).pipe(gulp.dest(config.images.dest));
+
+/**
+ * Copy assets
+ */
+const copyAssets = () => gulp.src(config.assets.src, { base: 'src/' }).pipe(gulp.dest(config.assets.dest));
+
+/**
+ * Copy static files
+ */
+const copy = gulp.parallel(copyHtml, copyFonts, copyImages, copyAssets);
+
+/**
+ * Transpile JavaScript files
+ */
+const compileScripts = () =>
   gulp
-    .src(paths.scripts, {
-      cwd: bases.app
-    })
-    .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError())
-})
+    .src(config.scripts.src)
+    .pipe(babel({ presets: ['@babel/env'] }))
+    .pipe(gulp.dest(config.scripts.dest));
 
-gulp.task('sass', function () {
-  return gulp
-    .src(paths.scss, {
-      cwd: bases.app
-    })
+/**
+ * Compile SASS files
+ */
+const compileSass = () =>
+  gulp
+    .src(config.sass.src)
+    .pipe(sourcemaps.init())
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest(bases.app + '/styles/css/'))
-})
-
-gulp.task('scripts', function () {
-  return gulp
-    .src(paths.scripts, {
-      cwd: bases.dist
-    })
-    .pipe(uglify())
-    .on('error', function (err) {
-      gutil.log(gutil.colors.red('[Error]'), err.toString())
-    })
-    .pipe(
-      gulp.dest('js/', {
-        cwd: bases.dist
-      })
-    )
-})
-
-gulp.task('styles', function () {
-  return gulp
-    .src(paths.css, {
-      cwd: bases.dist
-    })
     .pipe(autoprefixer())
-    .pipe(purge())
-    .pipe(cleanCSS())
+    .pipe(sourcemaps.write(config.sourcemaps))
+    .pipe(gulp.dest(config.sass.dest))
     .pipe(
-      gulp.dest('css/', {
-        cwd: bases.dist
+      browserSync.reload({
+        stream: true
       })
-    )
-})
+    );
 
-gulp.task('critical', function () {
-  return gulp
-    .src('index.html', {
-      cwd: bases.dist
-    })
-    .pipe(
-      critical({
-        base: bases.dist,
-        inline: true,
-        minify: true,
-        css: [bases.dist + './css/main.min.css']
-      })
-    )
-    .on('error', function (err) {
-      gutil.log(gutil.colors.red(err.message))
-    })
-    .pipe(gulp.dest(bases.dist))
-})
+/**
+ * Main compile task
+ */
+const compile = gulp.parallel(compileSass, compileScripts);
 
-// Copy tasks
-gulp.task('fonts', function () {
-  return gulp
-    .src(paths.fonts, {
-      cwd: bases.app
-    })
-    .pipe(gulp.dest(bases.dist + '/fonts'))
-})
-
-gulp.task('html', function () {
-  return gulp
-    .src(paths.html, {
-      cwd: bases.app
-    })
+/**
+ * Parse styles and scripts from index.html
+ */
+const parseHtml = () =>
+  gulp
+    .src('dist/index.html')
     .pipe(useref())
-    .pipe(gulp.dest(bases.dist))
-})
+    .pipe(gulpif('*.css', cssnano()))
+    .pipe(gulpif('*.css', autoprefixer()))
+    .pipe(gulpif('*.js', uglify()))
+    .on('error', gutil.log)
+    .pipe(gulp.dest(config.html.dest));
 
-gulp.task('images', function () {
-  return gulp
-    .src(paths.images, {
-      cwd: bases.app
-    })
-    .pipe(imagemin())
-    .pipe(gulp.dest(bases.dist + '/images'))
-})
+/**
+ * Watch for changes
+ */
+const watch = () => {
+  gulp.watch(config.html.src, copyHtml).on('change', browserSync.reload);
+  gulp.watch(config.sass.src, compileSass).on('change', browserSync.reload);
+  gulp.watch(config.scripts.src, compileScripts).on('change', browserSync.reload);
+  gulp.watch(config.fonts.src, copyFonts).on('change', browserSync.reload);
+  gulp.watch(config.images.src, copyImages).on('change', browserSync.reload);
+  gulp.watch(config.assets.src, copyAssets).on('change', browserSync.reload);
+};
 
-gulp.task('others', function () {
-  return gulp
-    .src(paths.others, {
-      cwd: bases.app
-    })
-    .pipe(gulp.dest(bases.dist))
-})
-
-// Clean task
-gulp.task('clean:dist', function () {
-  return gulp
-    .src(bases.dist, {
-      read: false
-    })
-    .pipe(clean())
-})
-
-// Build task
-gulp.task('build', function (cb) {
-  runSequence(
-    'clean:dist', ['sass'], ['html', 'fonts', 'others', 'images'], ['styles', 'scripts'],
-    'critical',
-    'serve:dist',
-    cb
-  )
-})
-
-// Serve tasks
-gulp.task('serve', ['sass', 'eslint'], function () {
+/**
+ * Run BrowserSync
+ */
+const runServer = done => {
   browserSync.init({
     server: {
-      baseDir: ['./', bases.app]
+      baseDir: config.browserSync.baseDir
     }
-  })
+  });
 
-  gulp.watch(bases.app + paths.html).on('change', browserSync.reload)
-  gulp.watch(bases.app + paths.scss, ['sass']).on('change', browserSync.reload)
-  gulp.watch(bases.app + paths.scripts, ['eslint']).on('change', browserSync.reload)
-})
+  done();
+};
 
-gulp.task('serve:dist', function () {
-  browserSync.init({
-    server: {
-      baseDir: bases.dist
-    }
-  })
-})
+/**
+ * Serve task
+ */
+gulp.task('serve', runServer);
+
+/**
+ * Development task
+ */
+gulp.task('default', gulp.series(clean, gulp.parallel(copy, compile), 'serve', watch));
+
+/**
+ * Build application
+ */
+gulp.task('build', gulp.series(clean, gulp.parallel(copy, compile), parseHtml));

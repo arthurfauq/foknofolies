@@ -1,0 +1,130 @@
+#v-nav {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -90px;
+  display: block;
+  font-size: 11px;
+  transition: all 0.5s;
+  z-index: 99;
+
+  .nav-link {
+    position: relative;
+    display: block;
+    margin-right: 0;
+    height: 30px;
+    text-transform: uppercase;
+    list-style: none;
+    text-decoration: none;
+
+    a {
+      color: rgba(0, 0, 0, 0.8);
+      font-weight: 400;
+      position: relative;
+      display: block;
+      width: 100%;
+      text-align: right;
+      padding-right: 55px;
+      line-height: 30px;
+      letter-spacing: 1px;
+      opacity: 0;
+      transition: all 0.3s;
+    }
+
+    &.active {
+      & a,
+      &::after,
+      &::before {
+        opacity: 0.9;
+      }
+
+      &::after {
+        width: 40px;
+      }
+    }
+
+    &::before {
+      position: absolute;
+      content: '';
+      background: #666;
+      width: 5px;
+      height: 5px;
+      right: 45px;
+      top: 12px;
+      opacity: 0.5;
+      transition: all 0.3s;
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      background: rgba(0, 0, 0, 0.5);
+      width: 0;
+      height: 1px;
+      right: 0;
+      top: 14px;
+      opacity: 0;
+      transition: all 0.5s;
+    }
+
+    &:focus a,
+    &:hover a,
+    &.active &:active a,
+    &:active::before,
+    &:focus::before,
+    &:hover::before {
+      opacity: 0.9;
+    }
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  #v-nav .nav-link a {
+    padding-right: 30px;
+  }
+
+  #v-nav .nav-link.active::after {
+    width: 15px;
+  }
+
+  #v-nav .nav-link::before {
+    right: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #v-nav {
+    margin-top: -120px;
+  }
+
+  #v-nav .nav-link {
+    height: 40px;
+  }
+
+  #v-nav .nav-link a {
+    font-size: 0;
+    letter-spacing: 0;
+    line-height: 40px;
+  }
+
+  #v-nav .nav-link::after {
+    display: none;
+  }
+
+  #v-nav .nav-link::before {
+    border-radius: 5px;
+    right: 15px;
+  }
+
+  #v-nav .nav-link.active::before {
+    width: 7px;
+    height: 7px;
+    border-radius: 7px;
+    right: 14px;
+    opacity: 0.9;
+  }
+
+  #v-nav .nav-link:hover:not(.active)::before {
+    opacity: 0.5;
+  }
+}

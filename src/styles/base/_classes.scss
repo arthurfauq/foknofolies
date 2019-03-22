@@ -1,0 +1,332 @@
+// Declare here your custom SASS classes
+
+.background-image {
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+.description-zone {
+  hr {
+    border-color: #505050;
+    width: 40%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .description-title {
+    font-size: 1.8em;
+  }
+
+  .description-icon {
+    max-width: 150px;
+    padding: 10px;
+  }
+
+  .description-text {
+    font-size: 18px;
+    line-height: 25px;
+    width: 85%;
+    margin: 10px auto;
+  }
+}
+
+.flexbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.h-align {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.info-box {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 180px;
+  height: 180px;
+  border-radius: 180px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+
+  p {
+    font-size: 2.5em;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.75);
+    line-height: 1.2em;
+  }
+}
+
+.large-button {
+  margin-top: 10px;
+  width: 170px;
+  height: 50px;
+  color: rgba(255, 255, 255, 0.89);
+  background-color: #333;
+  border: 1px solid rgba(226, 215, 212, 0.89);
+  text-align: center;
+  border-radius: 8px;
+  line-height: 1.2em;
+  font-size: 1.4em;
+  letter-spacing: 3px;
+  padding: 12px;
+  text-transform: uppercase;
+  transition: all 0.15s;
+  font-weight: 400;
+
+  &--disabled {
+    cursor: inherit;
+    opacity: 0.25;
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.89);
+    }
+  }
+
+  &:active,
+  &:focus,
+  &:visited {
+    background-color: #333;
+    color: rgba(255, 255, 255, 0.89);
+    border: 1px solid rgba(226, 215, 212, 0.89);
+  }
+
+  &:hover:not(.large-button--disabled) {
+    color: #333;
+    background-color: rgba(226, 215, 212, 0.89);
+    border: 1px solid #333;
+  }
+}
+
+.loading-icon {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background: url(../img/loader.gif) center no-repeat #000;
+}
+
+.logo {
+  max-height: 70vh;
+  width: auto;
+  max-width: 60vw;
+  margin-bottom: 20px;
+}
+
+.scroll-button {
+  span {
+    position: absolute;
+    bottom: 90px;
+    left: 50%;
+    width: 24px;
+    height: 24px;
+    margin-left: -12px;
+    border-left: 1px solid #111;
+    border-bottom: 1px solid #111;
+    transform: rotate(-45deg);
+    animation: scrollWay 2s infinite;
+    opacity: 0;
+    box-sizing: border-box;
+
+    &:nth-of-type(1) {
+      animation-delay: 0s;
+    }
+
+    &:nth-of-type(2) {
+      bottom: 64px;
+      animation-delay: 0.15s;
+    }
+
+    &:nth-of-type(3) {
+      bottom: 38px;
+      animation-delay: 0.3s;
+    }
+  }
+}
+
+.section {
+  position: relative;
+
+  &::before {
+    z-index: -10;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(226, 215, 212, 0.89);
+  }
+
+  &-content {
+    position: relative;
+    z-index: 10;
+  }
+}
+
+.sub-title {
+  font-size: 1.5em;
+  margin-bottom: 25px;
+  line-height: 1em;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.v-align {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+// Media queries
+
+@media screen and (min-width: 1250px) {
+  .section-content {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  .section-content {
+    width: 70%;
+  }
+  .info-box {
+    width: 150px;
+    height: 150px;
+    border-radius: 150px;
+
+    p {
+      font-size: 2em;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .description-zone {
+    margin-bottom: 20px;
+
+    hr {
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+
+    .description-title {
+      font-size: 1.4em;
+    }
+
+    .description-icon {
+      max-width: 100px;
+    }
+  }
+
+  .scroll-button {
+    span {
+      bottom: 52px;
+      width: 20px;
+      height: 20px;
+      margin-left: -10px;
+
+      &:nth-of-type(2) {
+        bottom: 35px;
+      }
+
+      &:nth-of-type(3) {
+        bottom: 18px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .info-box {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+
+    p {
+      font-size: 1.5em;
+    }
+  }
+
+  .large-button {
+    width: 140px;
+    height: 40px;
+    font-size: 1.2em;
+    padding: 8px;
+  }
+
+  .logo {
+    max-height: 50vh;
+    margin-bottom: 5px;
+  }
+
+  .section-content {
+    width: 85%;
+
+    .description-zone {
+      hr {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        border-color: #505050;
+      }
+
+      .description-title {
+        font-size: 1.25em;
+      }
+
+      .description-icon {
+        max-width: 80px;
+        padding: 5px;
+      }
+
+      .description-text {
+        font-size: 15px;
+        margin: 7px auto;
+      }
+    }
+  }
+
+  .sub-title {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  .section-content {
+    .description-zone {
+      margin-bottom: 15px;
+
+      hr {
+        margin-top: 3px;
+        margin-bottom: 3px;
+        border-color: #505050;
+      }
+
+      .description-title {
+        font-size: 1.15em;
+      }
+
+      .description-icon {
+        max-width: 60px;
+        padding: 5px;
+      }
+
+      .description-text {
+        line-height: 19px;
+        margin: 5px auto;
+        width: 90%;
+      }
+    }
+  }
+
+  .sub-title {
+    display: none;
+  }
+}

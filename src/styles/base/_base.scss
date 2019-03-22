@@ -1,0 +1,293 @@
+// Declare here your base styles
+
+* {
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.container-fluid,
+body,
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Raleway, sans-serif;
+  font-weight: 300;
+  background-color: #fdfdfd;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul {
+  margin: 0;
+}
+
+a,
+a:focus,
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+h1 {
+  font-size: 5em;
+  font-weight: 300;
+}
+
+h2 {
+  font-size: 2.8em;
+  margin-bottom: 10px;
+  font-weight: 300;
+}
+
+ul {
+  padding: 0;
+}
+
+@media screen and (max-width: 992px) {
+  h1 {
+    font-size: 3.5em;
+  }
+  h2 {
+    font-size: 2.4em;
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 3em;
+  }
+  h2 {
+    font-size: 2em;
+    margin-bottom: 5px;
+  }
+}
+
+#accueil-section .container-fluid img {
+  max-height: 60vh;
+  width: auto;
+  max-width: 60vw;
+  position: absolute;
+  opacity: 0.3;
+  z-index: -6;
+}
+
+@media screen and (orientation: portrait) {
+  #accueil-section .container-fluid .section-content {
+    flex-direction: column;
+    height: 70%;
+  }
+}
+
+#accueil-section .container-fluid .section-content .info-box:first-child p:first-child,
+#accueil-section .container-fluid .section-content .info-box:first-child p:last-child {
+  font-size: 1em;
+  line-height: 0.5em;
+}
+
+#accueil-section .container-fluid .section-content .info-box:first-child p:last-child {
+  line-height: 0.9em;
+}
+
+#itineraire-section #maps-loading {
+  width: 80%;
+  height: 45vh;
+  background: url(../img/tail-spin.svg) no-repeat center;
+}
+
+#itineraire-section #maps-loading #maps {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+#programme-section .description-zone .playlist {
+  height: 30vh;
+}
+
+#contact-section .contact-zone {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#contact-section .contact-zone .description-zone,
+#contact-section .contact-zone .description-zone .description-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#contact-section .contact-zone .description-zone .description-photo {
+  margin: 10px;
+  max-width: 150px;
+  max-height: 150px;
+  border-radius: 50%;
+  width: auto;
+  padding: 15px;
+  transition: all 0.3s;
+}
+
+#contact-section .contact-zone .description-zone .description-photo:hover {
+  padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+  #itineraire-section .description-zone {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 768px) and (orientation: portrait) {
+  #accueil-section .background-image {
+    top: -18%;
+  }
+  #contact-section .background-image {
+    bottom: -18%;
+  }
+  #contact-section .contact-zone {
+    flex-direction: column;
+    margin: 0 0 25px;
+  }
+  #contact-section .contact-zone .description-zone {
+    margin: 1vh;
+  }
+  #contact-section .contact-zone .description-zone .description-content .description-text {
+    font-size: 13px;
+    margin: 0 !important;
+    line-height: 13px;
+  }
+  #contact-section .contact-zone .description-zone .description-photo {
+    margin: 2px;
+    max-width: 55px;
+    max-height: 55px;
+    padding: 0;
+  }
+  #contact-section .contact-zone .description-zone .description-photo:hover {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  #accueil-section .background-image {
+    top: -68%;
+  }
+  .large-button {
+    margin: 8px;
+  }
+  #itineraire-section .description-zone {
+    display: none;
+  }
+  #contact-section .background-image {
+    bottom: -68%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #accueil-section .background-image {
+    top: -20%;
+  }
+  #contact-section .background-image {
+    bottom: -20%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  #contact-section .contact-zone .description-zone .description-content .description-text {
+    font-size: 13px;
+    margin: 2px 0;
+    line-height: 13px;
+  }
+  #contact-section .contact-zone .description-zone .description-content .description-title {
+    font-size: 1.2em;
+  }
+  #contact-section .contact-zone .description-zone .description-photo {
+    margin: 0 12px;
+    max-width: 80px;
+    max-height: 80px;
+    padding: 5px;
+  }
+  #contact-section .contact-zone .description-zone .description-photo:hover {
+    padding: 5px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  #accueil-section .background-image {
+    top: -30%;
+  }
+  #contact-section .background-image {
+    bottom: -30%;
+  }
+}
+
+@media screen and (max-width: 1250px) {
+  #itineraire-section #maps-loading {
+    width: 100%;
+  }
+  #contact-section .contact-zone {
+    justify-content: space-between;
+  }
+}
+
+@media screen and (min-width: 1250px) {
+  #accueil-section .background-image {
+    top: -65%;
+  }
+  #contact-section .background-image {
+    bottom: -65%;
+  }
+}
+
+#logo-animation {
+  display: none;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  position: absolute;
+  background-color: #000;
+}
+
+#logo-animation #skip {
+  position: absolute;
+  right: 4%;
+  bottom: 16px;
+  font-size: 1.6em;
+  color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  #logo-animation #skip {
+    font-size: 1.3em;
+  }
+}
+
+#logo-animation #svg-logo-foknofolies {
+  fill: none;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  stroke-width: 8px;
+  padding: 20px;
+}
+
+#logo-animation #svg-logo-foknofolies #svg-logo-texte,
+#logo-animation #svg-logo-foknofolies #svg-logo-trace {
+  animation: animateLine 8s ease-in-out forwards;
+}
+
+#logo-animation #svg-logo-foknofolies #svg-logo-editionNb {
+  opacity: 0;
+  animation: particlesLine 1s ease-in-out 7s forwards;
+}
