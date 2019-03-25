@@ -39,12 +39,13 @@ const initCountdown = () => {
   }, 500);
 };
 
-function initFullPage() {
+const initFullPage = () => {
   $('#full-page').fadeIn('fast');
 
   $('#full-page').fullpage({
     menu: '#v-nav',
     css3: false,
+    recordHistory: false,
     scrollingSpeed: 600,
     autoScrolling: true,
     fitToSection: true,
@@ -95,12 +96,12 @@ function initFullPage() {
       // eslint-disable-next-line no-undef
       initMap();
     },
-    onLeave(n, e) {
+    onLeave(origin, destination) {
       for (
         let i = $('#logo-line')
             .find('svg')
             .children().length,
-          t = e - 1,
+          t = destination - 1,
           a = t;
         a < i;
         a += 1
@@ -125,55 +126,55 @@ function initFullPage() {
         }
       }
 
-      if (n === 1) {
+      if (origin === 1) {
         setTimeout(() => {
           $('#accueil-section .background-image')
             .eq(0)
             .removeClass('fadeInDown');
         }, 500);
-      } else if (e === 1) {
+      } else if (destination === 1) {
         $('#accueil-section .background-image')
           .eq(0)
           .addClass('fadeInDown');
       }
 
-      if (n === 6) {
+      if (origin === 6) {
         setTimeout(() => {
           $('#contact-section .background-image')
             .eq(0)
             .removeClass('fadeInUp');
         }, 500);
-      } else if (e === 6) {
+      } else if (destination === 6) {
         $('#contact-section .background-image')
           .eq(0)
           .addClass('fadeInUp');
       }
     },
     afterLoad() {
-      const o = $('#programme-section.fp-section.active').find('.fp-slide.active');
-      o.find('.description-text').addClass('fadeInUp');
-      o.find('.description-title').addClass('fadeIn');
-      o.find('.playlist').addClass('fadeInUp');
-      o.find('hr.fadeRight').addClass('fadeInRight');
-      o.find('hr.fadeLeft').addClass('fadeInLeft');
-      o.find('.description-icon').addClass('bounceIn');
+      const activeSlide = $('#programme-section.fp-section.active').find('.fp-slide.active');
+
+      activeSlide.find('.description-text').addClass('fadeInUp');
+      activeSlide.find('.description-title').addClass('fadeIn');
+      activeSlide.find('.playlist').addClass('fadeInUp');
+      activeSlide.find('hr.fadeRight').addClass('fadeInRight');
+      activeSlide.find('hr.fadeLeft').addClass('fadeInLeft');
+      activeSlide.find('.description-icon').addClass('bounceIn');
     },
     afterSlideLoad() {
-      const t = $('#programme-section.fp-section.active').find('.fp-slide.active');
-      t.find('.description-text').addClass('fadeInUp');
-      t.find('.description-title').addClass('fadeIn');
-      t.find('.playlist').addClass('fadeInUp');
-      t.find('hr.fadeRight').addClass('fadeInRight');
-      t.find('hr.fadeLeft').addClass('fadeInLeft');
-      t.find('.description-icon').addClass('bounceIn');
+      const activeSlide = $('#programme-section.fp-section.active').find('.fp-slide.active');
+
+      activeSlide.find('.description-text').addClass('fadeInUp');
+      activeSlide.find('.description-title').addClass('fadeIn');
+      activeSlide.find('.playlist').addClass('fadeInUp');
+      activeSlide.find('hr.fadeRight').addClass('fadeInRight');
+      activeSlide.find('hr.fadeLeft').addClass('fadeInLeft');
+      activeSlide.find('.description-icon').addClass('bounceIn');
     }
   });
-}
+};
 
 $(document).ready(() => {
-  let n = false;
-
-  window.location.replace('#');
+  let initialized = false;
 
   setTimeout(() => {
     $('.loading-icon').fadeOut('slow');
@@ -186,15 +187,15 @@ $(document).ready(() => {
     initFullPage();
     $('#logo-animation').fadeOut('slow');
     setTimeout(() => initCountdown(), 500);
-    n = true;
+    initialized = true;
   });
 
   setTimeout(() => {
-    if (n === false) {
+    if (!initialized) {
       initFullPage();
       setTimeout(() => $('#logo-animation').fadeOut('slow'), 500);
-      setTimeout(() => initCountdown(), 1500);
-      n = true;
+      setTimeout(() => initCountdown(), 1000);
+      initialized = true;
     }
   }, 8500);
 
