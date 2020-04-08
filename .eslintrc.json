@@ -1,0 +1,90 @@
+{
+  "overrides": [
+    {
+      "files": ["src/**/*.{ts,tsx}"],
+      "extends": [
+        "airbnb-typescript",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:promise/recommended",
+        "plugin:import/typescript",
+        "plugin:unicorn/recommended",
+        "plugin:prettier/recommended",
+        "prettier/react",
+        "prettier/@typescript-eslint"
+      ],
+      "env": {
+        "browser": true,
+        "es6": true,
+        "node": true,
+        "jquery": true
+      },
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "ecmaFeatures": {
+          "jsx": true
+        },
+        "ecmaVersion": 2018,
+        "project": "./tsconfig.json",
+        "sourceType": "module"
+      },
+      "plugins": ["import"],
+      "rules": {
+        "padding-line-between-statements": [
+          "error",
+          {
+            "blankLine": "always",
+            "prev": "*",
+            "next": ["return", "function"]
+          },
+          {
+            "blankLine": "always",
+            "prev": ["const", "let"],
+            "next": "*"
+          },
+          {
+            "blankLine": "any",
+            "prev": ["const", "let"],
+            "next": ["const", "let"]
+          }
+        ],
+        "quotes": [
+          "error",
+          "single",
+          {
+            "avoidEscape": true,
+            "allowTemplateLiterals": false
+          }
+        ],
+        "import/order": [
+          "error",
+          {
+            "groups": ["external", "internal", ["parent", "sibling", "index"]],
+            "newlines-between": "always"
+          }
+        ],
+        "unicorn/prevent-abbreviations": [
+          "error",
+          {
+            "whitelist": {
+              "Props": true,
+              "Ref": true
+            }
+          }
+        ]
+      },
+      "settings": {
+        "react": {
+          "version": "detect"
+        },
+        "import/parsers": {
+          "@typescript-eslint/parser": [".ts", ".tsx"]
+        },
+        "import/resolver": {
+          "typescript": {
+            "alwaysTryTypes": true
+          }
+        }
+      }
+    }
+  ]
+}

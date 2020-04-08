@@ -99,7 +99,7 @@ ul {
 #itineraire-section #maps-loading {
   width: 80%;
   height: 45vh;
-  background: url(../img/tail-spin.svg) no-repeat center;
+  background: url(../../img/tail-spin.svg) no-repeat center;
 }
 
 #itineraire-section #maps-loading #maps {
@@ -266,8 +266,23 @@ ul {
   position: absolute;
   right: 4%;
   bottom: 16px;
-  font-size: 1.6em;
+  font-size: 1.4em;
+  font-family: Raleway, sans-serif;
   color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  display: inline;
+  margin: 0;
+  padding: 0;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    border: none;
+    outline: none;
+  }
 }
 
 @media screen and (max-width: 768px) {
