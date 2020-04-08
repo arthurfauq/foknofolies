@@ -1,7 +1,7 @@
 // @ts-nocheck
 
 const initCountdown = () => {
-  const days = moment('2019-06-08').diff(moment().format('YYYY-MM-DD'), 'days');
+  const days = moment('2020-07-04').diff(moment().format('YYYY-MM-DD'), 'days');
 
   const counter = {
     $element: null,
@@ -19,7 +19,7 @@ const initCountdown = () => {
       if (this.maxCount >= 0) this.$element.html(`- ${this.count}`);
       else this.$element.html(`+ ${this.count}`);
 
-      if (this.count === this.maxCount) window.clearInterval(this.interval);
+      if (this.count === Math.abs(this.maxCount)) window.clearInterval(this.interval);
       else this.count = this.count + 1;
     }
   };
