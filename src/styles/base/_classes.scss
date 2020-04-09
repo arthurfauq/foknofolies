@@ -6,6 +6,10 @@
   width: 100%;
 }
 
+.container-fluid {
+  position: relative;
+}
+
 .description-zone {
   hr {
     border-color: #505050;
@@ -49,7 +53,7 @@
   display: none;
   flex-direction: column;
   justify-content: center;
-  width: 180px;
+  min-width: 180px;
   height: 180px;
   border-radius: 180px;
   border: 1px solid rgba(0, 0, 0, 0.4);
@@ -201,7 +205,7 @@
     width: 70%;
   }
   .info-box {
-    width: 150px;
+    min-width: 150px;
     height: 150px;
     border-radius: 150px;
 
@@ -249,7 +253,7 @@
 
 @media screen and (max-width: 768px) {
   .info-box {
-    width: 100px;
+    min-width: 100px;
     height: 100px;
     border-radius: 100px;
 
