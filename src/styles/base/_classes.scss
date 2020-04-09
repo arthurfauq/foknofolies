@@ -1,9 +1,10 @@
 // Declare here your custom SASS classes
 
 .background-image {
+  display: none;
+  width: 100%;
   position: absolute;
   left: 0;
-  width: 100%;
 }
 
 .container-fluid {
@@ -176,7 +177,7 @@
 }
 
 .sub-title {
-  font-size: 1.5em;
+  font-size: 1.4em;
   margin-bottom: 25px;
   line-height: 1em;
 }

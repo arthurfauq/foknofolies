@@ -114,25 +114,23 @@ const onLeave = (origin, destination) => {
     }
   }
 
-  if (origin.index === 1) {
-    setTimeout(() => {
-      $('#accueil-section .background-image')
-        .eq(0)
-        .removeClass('fadeInDown');
-    }, 500);
-  } else if (destination.index === 1) {
+  if (origin.index === 0) {
+    $('#accueil-section .background-image')
+      .eq(0)
+      .delay(500)
+      .removeClass('fadeInDown');
+  } else if (destination.index === 0) {
     $('#accueil-section .background-image')
       .eq(0)
       .addClass('fadeInDown');
   }
 
-  if (origin.index === 6) {
-    setTimeout(() => {
-      $('#contact-section .background-image')
-        .eq(0)
-        .removeClass('fadeInUp');
-    }, 500);
-  } else if (destination.index === 6) {
+  if (origin.index === SECTIONS.length - 1) {
+    $('#contact-section .background-image')
+      .eq(0)
+      .delay(500)
+      .removeClass('fadeInUp');
+  } else if (destination.index === SECTIONS.length - 1) {
     $('#contact-section .background-image')
       .eq(0)
       .addClass('fadeInUp');
@@ -151,97 +149,78 @@ const afterSlideLoad = () => {
 };
 
 const App = (): ReactElement => {
-  const [initialized, setInitialized] = useState(false);
-
-  const skipIntro = () => {
-    $('#fullpage').fadeIn('fast');
-    $('#logo-animation').fadeOut('slow');
-    setTimeout(() => initCountdown(), 500);
-    setInitialized(true);
-  };
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    $('.loading-icon').fadeOut('slow');
-    $('#logo-animation')
-      .fadeIn('fast')
-      .css('display', 'flex');
-
-    setTimeout(() => {
-      if (!initialized) {
-        $('#fullpage').fadeIn('fast');
-        setTimeout(() => $('#logo-animation').fadeOut('slow'), 500);
-        setTimeout(() => initCountdown(), 1000);
-        setInitialized(true);
-      }
-    }, 8500);
-
-    $('#programme-section')
-      .find('.description-icon, .description-text, .description-title, hr, .playlist')
-      .addClass('animated')
-      .css('opacity', 0);
-
-    $('.background-image').css('display', 'none');
-    $('.background-image').on('load', function(this) {
-      $(this).fadeIn();
-    });
-  }, []);
+    if (!loading) {
+      setTimeout(initCountdown, 500);
+      $('.background-image').on('load', function(this) {
+        $(this)
+          .delay(150)
+          .fadeIn();
+      });
+    }
+  }, [loading]);
 
   return (
     <div>
-      <div className="loading-icon" />
+      <LoadingScreen isVisible={loading} onHide={() => setLoading(false)} />
 
-      <LoadingScreen onSkip={skipIntro} />
+      {!loading && (
+        <>
+          <ReactFullpage
+            menu="#v-nav"
+            css3={false}
+            animateAnchor={false}
+            recordHistory={false}
+            scrollingSpeed={600}
+            autoScrolling
+            fitToSection
+            controlArrows
+            slidesNavigation
+            lazyLoading
+            slidesNavPosition="bottom"
+            verticalCentered={false}
+            sectionSelector=".section"
+            fixedElements="#logo-line"
+            normalScrollElements="#maps, .owl-item"
+            onLeave={onLeave}
+            afterLoad={afterSlideLoad}
+            afterSlideLoad={afterSlideLoad}
+            render={(): ReactElement => (
+              <ReactFullpage.Wrapper>
+                {SECTIONS.map(({ id, component }) => (
+                  <div id={`${id}-section`} className="section" data-anchor={id} key={id}>
+                    <div className="container-fluid flexbox">{component}</div>
+                  </div>
+                ))}
+              </ReactFullpage.Wrapper>
+            )}
+          />
 
-      <ReactFullpage
-        licenseKey={null}
-        menu="#v-nav"
-        css3={false}
-        recordHistory={false}
-        scrollingSpeed={600}
-        autoScrolling
-        fitToSection
-        controlArrows
-        slidesNavigation
-        slidesNavPosition="bottom"
-        verticalCentered={false}
-        sectionSelector=".section"
-        fixedElements="#logo-line"
-        normalScrollElements="#maps, .owl-item"
-        onLeave={onLeave}
-        afterLoad={afterSlideLoad}
-        afterSlideLoad={afterSlideLoad}
-        render={(): ReactElement => (
-          <ReactFullpage.Wrapper>
-            {SECTIONS.map(({ id, component }) => (
-              <div id={`${id}-section`} className="section" data-anchor={id} key={id}>
-                {component}
-              </div>
+          <div id="logo-line">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2350 1950">
+              <line x1="1.15" y1="1126.47" x2="1087.97" y2="1.49" />
+              <line x1="1087.97" y1="1.49" x2="2341.27" y2="1203.39" />
+              <line x1="503.35" y1="1721.33" x2="2341.27" y2="1203.39" />
+              <line x1="1.15" y1="1126.47" x2="503.35" y2="1721.33" />
+              <line x1="1.15" y1="1126.47" x2="2029.44" y2="1936.71" />
+              <line x1="1.15" y1="1126.47" x2="2008.08" y2="115.45" />
+              <line x1="2029.44" y1="1936.71" x2="2008.08" y2="115.45" />
+              <line x1="1087.97" y1="1.49" x2="2008.08" y2="115.45" />
+              <line x1="2341.27" y1="1203.39" x2="2008.08" y2="115.45" />
+            </svg>
+          </div>
+
+          <ul id="v-nav">
+            {SECTIONS.map(({ id, label }) => (
+              <li className="nav-link" data-menuanchor={id} key={id}>
+                <a href={`#${id}`}>{label}</a>
+              </li>
             ))}
-          </ReactFullpage.Wrapper>
-        )}
-      />
-
-      <div id="logo-line">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2350 1950">
-          <line x1="1.15" y1="1126.47" x2="1087.97" y2="1.49" />
-          <line x1="1087.97" y1="1.49" x2="2341.27" y2="1203.39" />
-          <line x1="503.35" y1="1721.33" x2="2341.27" y2="1203.39" />
-          <line x1="1.15" y1="1126.47" x2="503.35" y2="1721.33" />
-          <line x1="1.15" y1="1126.47" x2="2029.44" y2="1936.71" />
-          <line x1="1.15" y1="1126.47" x2="2008.08" y2="115.45" />
-          <line x1="2029.44" y1="1936.71" x2="2008.08" y2="115.45" />
-          <line x1="1087.97" y1="1.49" x2="2008.08" y2="115.45" />
-          <line x1="2341.27" y1="1203.39" x2="2008.08" y2="115.45" />
-        </svg>
-      </div>
-
-      <ul id="v-nav">
-        {SECTIONS.map(({ id, label }) => (
-          <li className="nav-link" data-menuanchor={id} key={id}>
-            <a href={`#${id}`}>{label}</a>
-          </li>
-        ))}
-      </ul>
+          </ul>
+        </>
+      )}
     </div>
   );
 };

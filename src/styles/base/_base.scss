@@ -96,20 +96,16 @@ ul {
   line-height: 0.9em;
 }
 
-#itineraire-section #maps-loading {
+#itineraire-section #maps-container {
   width: 80%;
   height: 45vh;
-  background: url(../../img/tail-spin.svg) no-repeat center;
+  margin-bottom: 10px;
 }
 
-#itineraire-section #maps-loading #maps {
+#itineraire-section #maps-container #maps {
   width: 100%;
   height: 100%;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-}
-
-#programme-section .description-zone .playlist {
-  height: 30vh;
 }
 
 #contact-section .contact-zone {
@@ -135,10 +131,6 @@ ul {
   width: auto;
   padding: 15px;
   transition: all 0.3s;
-}
-
-#contact-section .contact-zone .description-zone .description-photo:hover {
-  padding: 0;
 }
 
 @media screen and (max-width: 768px) {
@@ -170,9 +162,6 @@ ul {
     margin: 2px;
     max-width: 55px;
     max-height: 55px;
-    padding: 0;
-  }
-  #contact-section .contact-zone .description-zone .description-photo:hover {
     padding: 0;
   }
 }
@@ -216,9 +205,6 @@ ul {
     max-height: 80px;
     padding: 5px;
   }
-  #contact-section .contact-zone .description-zone .description-photo:hover {
-    padding: 5px;
-  }
 }
 
 @media screen and (min-width: 992px) {
@@ -231,7 +217,7 @@ ul {
 }
 
 @media screen and (max-width: 1250px) {
-  #itineraire-section #maps-loading {
+  #itineraire-section #maps-container {
     width: 100%;
   }
   #contact-section .contact-zone {
