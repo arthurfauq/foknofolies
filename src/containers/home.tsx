@@ -1,8 +1,8 @@
 import React, { ReactElement } from 'react';
 
-import backgroundReverseSmallImg from '../img/background-reverse-small.png';
-import backgroundReverseBigImg from '../img/background-reverse-big.png';
-import logoLines from '../img/logo-foknofolies-trace.png';
+import backgroundReverseSmallImg from 'images/background-reverse-small.png';
+import backgroundReverseBigImg from 'images/background-reverse-big.png';
+import logoLines from 'images/logo-foknofolies-trace.png';
 
 const Home = (): ReactElement => {
   return (

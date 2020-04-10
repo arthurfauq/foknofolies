@@ -1,8 +1,8 @@
 import React, { ReactElement, useEffect } from 'react';
 
-import targetIcon from '../img/icons/target.svg';
-import rocketIcon from '../img/icons/rocket.svg';
-import doughnutIcon from '../img/icons/doughnut.svg';
+import targetIcon from 'images/target.svg';
+import rocketIcon from 'images/rocket.svg';
+import doughnutIcon from 'images/doughnut.svg';
 
 const Activities = (): ReactElement => {
   useEffect(() => {

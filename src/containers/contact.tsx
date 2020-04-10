@@ -1,10 +1,10 @@
 import React, { ReactElement } from 'react';
 
-import backgroundSmallImg from '../img/background-small.png';
-import backgrounBigImg from '../img/background-big.png';
-import arthurImg from '../img/arthur.jpg';
-import gaspardImg from '../img/gaspard.jpg';
-import camilleImg from '../img/camille.jpg';
+import backgroundSmallImg from 'images/background-small.png';
+import backgrounBigImg from 'images/background-big.png';
+import arthurImg from 'images/arthur.jpg';
+import gaspardImg from 'images/gaspard.jpg';
+import camilleImg from 'images/camille.jpg';
 
 const Contact = (): ReactElement => {
   return (

@@ -1,7 +1,7 @@
 import React, { ReactElement, memo } from 'react';
 import OwlCarousel from 'react-owl-carousel';
 
-import gallery from '../img/gallerie';
+import gallery from 'images/gallery';
 
 const Carousel = (): ReactElement => {
   return (

@@ -1,6 +1,6 @@
 import React, { ReactElement, useEffect, useRef, useState, useCallback } from 'react';
 
-import balloonsIcon from '../img/icons/balloons.png';
+import balloonsIcon from 'images/balloons.png';
 
 const coords = { lat: 48.3, lng: 2.2 };
 const destination = { lat: 47.75323, lng: 1.968723 };
