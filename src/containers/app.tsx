@@ -1,14 +1,18 @@
-import React, { ReactElement, useEffect, useState } from 'react';
-import moment from 'moment';
 import ReactFullpage from '@fullpage/react-fullpage';
+import moment from 'moment';
+import React, { ReactElement, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
-import Itinerary from 'containers/itinerary';
-import Home from 'containers/home';
+import Page from 'components/page';
 import Activities from 'containers/activities';
-import Pot from 'containers/pot';
-import Gallery from 'containers/gallery';
 import Contact from 'containers/contact';
+import Gallery from 'containers/gallery';
+import Home from 'containers/home';
+import Itinerary from 'containers/itinerary';
 import LoadingScreen from 'containers/loading-screen';
+import Pot from 'containers/pot';
+import Unauthorized from 'containers/unauthorized';
+import { RootState } from 'reducers';
 
 type Section = {
   id: string;
@@ -150,6 +154,7 @@ const afterSlideLoad = () => {
 
 const App = (): ReactElement => {
   const [loading, setLoading] = useState(true);
+  const isAuthorized = useSelector((state: RootState) => state.auth.isAuthorized);
 
   useEffect(() => {
     if (!loading) {
@@ -162,65 +167,65 @@ const App = (): ReactElement => {
     }
   }, [loading]);
 
+  if (!isAuthorized) {
+    return <Unauthorized />;
+  }
+
   return (
     <div>
       <LoadingScreen isVisible={loading} onHide={() => setLoading(false)} />
 
-      {!loading && (
-        <>
-          <ReactFullpage
-            menu="#v-nav"
-            css3={false}
-            animateAnchor={false}
-            recordHistory={false}
-            scrollingSpeed={600}
-            autoScrolling
-            fitToSection
-            controlArrows
-            slidesNavigation
-            lazyLoading
-            slidesNavPosition="bottom"
-            verticalCentered={false}
-            sectionSelector=".section"
-            fixedElements="#logo-line"
-            normalScrollElements="#maps, .owl-item"
-            onLeave={onLeave}
-            afterLoad={afterSlideLoad}
-            afterSlideLoad={afterSlideLoad}
-            render={(): ReactElement => (
-              <ReactFullpage.Wrapper>
-                {SECTIONS.map(({ id, component }) => (
-                  <div id={`${id}-section`} className="section" data-anchor={id} key={id}>
-                    <div className="container-fluid flexbox">{component}</div>
-                  </div>
-                ))}
-              </ReactFullpage.Wrapper>
-            )}
-          />
-
-          <div id="logo-line">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2350 1950">
-              <line x1="1.15" y1="1126.47" x2="1087.97" y2="1.49" />
-              <line x1="1087.97" y1="1.49" x2="2341.27" y2="1203.39" />
-              <line x1="503.35" y1="1721.33" x2="2341.27" y2="1203.39" />
-              <line x1="1.15" y1="1126.47" x2="503.35" y2="1721.33" />
-              <line x1="1.15" y1="1126.47" x2="2029.44" y2="1936.71" />
-              <line x1="1.15" y1="1126.47" x2="2008.08" y2="115.45" />
-              <line x1="2029.44" y1="1936.71" x2="2008.08" y2="115.45" />
-              <line x1="1087.97" y1="1.49" x2="2008.08" y2="115.45" />
-              <line x1="2341.27" y1="1203.39" x2="2008.08" y2="115.45" />
-            </svg>
-          </div>
-
-          <ul id="v-nav">
-            {SECTIONS.map(({ id, label }) => (
-              <li className="nav-link" data-menuanchor={id} key={id}>
-                <a href={`#${id}`}>{label}</a>
-              </li>
+      <ReactFullpage
+        menu="#v-nav"
+        css3={false}
+        animateAnchor={false}
+        recordHistory={false}
+        scrollingSpeed={600}
+        autoScrolling
+        fitToSection
+        controlArrows
+        slidesNavigation
+        lazyLoading
+        slidesNavPosition="bottom"
+        verticalCentered={false}
+        sectionSelector=".section"
+        fixedElements="#logo-line"
+        normalScrollElements="#maps, .owl-item"
+        onLeave={onLeave}
+        afterLoad={afterSlideLoad}
+        afterSlideLoad={afterSlideLoad}
+        render={(): ReactElement => (
+          <ReactFullpage.Wrapper>
+            {SECTIONS.map(({ id, component }) => (
+              <div id={`${id}-section`} className="section" data-anchor={id} key={id}>
+                <Page>{component}</Page>
+              </div>
             ))}
-          </ul>
-        </>
-      )}
+          </ReactFullpage.Wrapper>
+        )}
+      />
+
+      <div id="logo-line">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2350 1950">
+          <line x1="1.15" y1="1126.47" x2="1087.97" y2="1.49" />
+          <line x1="1087.97" y1="1.49" x2="2341.27" y2="1203.39" />
+          <line x1="503.35" y1="1721.33" x2="2341.27" y2="1203.39" />
+          <line x1="1.15" y1="1126.47" x2="503.35" y2="1721.33" />
+          <line x1="1.15" y1="1126.47" x2="2029.44" y2="1936.71" />
+          <line x1="1.15" y1="1126.47" x2="2008.08" y2="115.45" />
+          <line x1="2029.44" y1="1936.71" x2="2008.08" y2="115.45" />
+          <line x1="1087.97" y1="1.49" x2="2008.08" y2="115.45" />
+          <line x1="2341.27" y1="1203.39" x2="2008.08" y2="115.45" />
+        </svg>
+      </div>
+
+      <ul id="v-nav">
+        {SECTIONS.map(({ id, label }) => (
+          <li className="nav-link" data-menuanchor={id} key={id}>
+            <a href={`#${id}`}>{label}</a>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

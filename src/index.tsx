@@ -1,7 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
-import App from 'containers/app';
+import Root from 'containers/root';
+import rootReducer from 'reducers';
+
 import './styles/main.scss';
 
-ReactDOM.render(<App />, document.querySelector('#root'));
+const store = createStore(rootReducer);
+
+ReactDOM.render(
+  <Provider store={store}>
+    <Router>
+      <Root />
+    </Router>
+  </Provider>,
+  document.querySelector('#root')
+);

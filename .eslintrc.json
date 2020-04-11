@@ -70,6 +70,12 @@
               "Ref": true
             }
           }
+        ],
+        "react/jsx-props-no-spreading": [
+          "error",
+          {
+            "custom": "ignore"
+          }
         ]
       },
       "settings": {
