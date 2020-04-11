@@ -23,8 +23,6 @@ const Root = (): ReactElement => {
     window.fbAsyncInit = (): void => {
       window.FB.init({
         appId: FB_APP_ID,
-        cookie: true,
-        status: true,
         version: 'v6.0',
       });
 

@@ -1,21 +1,15 @@
 import React, { ReactElement, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import FacebookLogin from 'react-facebook-login';
 
 import Page from 'components/page';
 import logo from 'images/logo-foknofolies.jpg';
 import useLogin from 'hooks/use-login';
+import { FB_APP_ID } from 'config';
 
 const Login = (): ReactElement => {
   const history = useHistory();
-  const { checkLoginState, isAuthenticated } = useLogin();
-
-  const handleLogin = () => {
-    window.FB.login(checkLoginState);
-  };
-
-  useEffect(() => {
-    window.FB.XFBML.parse();
-  }, []);
+  const { isAuthenticated, checkLoginState } = useLogin();
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -26,17 +20,15 @@ const Login = (): ReactElement => {
   return (
     <Page flexDirection="column">
       <img src={logo} alt="" className="logo" />
-      <button
-        type="button"
-        className="fb-login-button"
-        data-width=""
-        data-size="large"
-        data-button-type="continue_with"
-        data-layout="default"
-        data-auto-logout-link="false"
-        data-use-continue-as="true"
-        aria-label="Facebook Login"
-        onClick={handleLogin}
+      <FacebookLogin
+        appId={FB_APP_ID}
+        version="6.0"
+        callback={checkLoginState}
+        autoLoad={false}
+        fields="name"
+        language="fr_FR"
+        textButton="Continuer avec Facebook"
+        size="medium"
       />
       <div className="section-content">
         <div className="description-zone">

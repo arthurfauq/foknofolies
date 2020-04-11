@@ -1,6 +1,6 @@
 import ReactFullpage from '@fullpage/react-fullpage';
 import moment from 'moment';
-import React, { ReactElement, useEffect, useState } from 'react';
+import React, { ReactElement, useEffect, useState, ElementType } from 'react';
 import { useSelector } from 'react-redux';
 
 import Page from 'components/page';
@@ -17,39 +17,39 @@ import { RootState } from 'reducers';
 type Section = {
   id: string;
   label: string;
-  component: ReactElement;
+  component: ElementType;
 };
 
 const SECTIONS: Section[] = [
   {
     id: 'accueil',
     label: 'Accueil',
-    component: <Home />,
+    component: Home,
   },
   {
     id: 'itineraire',
     label: 'Itinéraire',
-    component: <Itinerary />,
+    component: Itinerary,
   },
   {
     id: 'programme',
     label: 'Programme',
-    component: <Activities />,
+    component: Activities,
   },
   {
     id: 'cagnotte',
     label: 'cagnotte',
-    component: <Pot />,
+    component: Pot,
   },
   {
     id: 'gallerie',
     label: 'Gallerie',
-    component: <Gallery />,
+    component: Gallery,
   },
   {
     id: 'contact',
     label: 'Contact',
-    component: <Contact />,
+    component: Contact,
   },
 ];
 
@@ -196,9 +196,11 @@ const App = (): ReactElement => {
         afterSlideLoad={afterSlideLoad}
         render={(): ReactElement => (
           <ReactFullpage.Wrapper>
-            {SECTIONS.map(({ id, component }) => (
+            {SECTIONS.map(({ id, component: Component }) => (
               <div id={`${id}-section`} className="section" data-anchor={id} key={id}>
-                <Page>{component}</Page>
+                <Page>
+                  <Component />
+                </Page>
               </div>
             ))}
           </ReactFullpage.Wrapper>
