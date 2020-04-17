@@ -5,8 +5,15 @@ import backgrounBigImg from 'images/background-big.png';
 import arthurImg from 'images/arthur.jpg';
 import gaspardImg from 'images/gaspard.jpg';
 import camilleImg from 'images/camille.jpg';
+import useLogin from 'hooks/use-login';
 
 const Contact = (): ReactElement => {
+  const { logout } = useLogin();
+
+  const handleLogout = () => {
+    logout();
+  };
+
   return (
     <>
       <img
@@ -41,6 +48,11 @@ const Contact = (): ReactElement => {
           </div>
         </div>
       </div>
+
+      <button type="button" className="logout-button" onClick={handleLogout}>
+        Déconnexion&nbsp;
+        <i className="fa fa-lg fa-sign-out" />
+      </button>
     </>
   );
 };

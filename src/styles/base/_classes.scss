@@ -121,9 +121,14 @@
   background: url(../../images/loader.gif) center no-repeat #000;
 }
 
-.login-button {
-  margin-top: 8px;
-  margin-bottom: 8px;
+.logout-button {
+  position: absolute;
+  bottom: 8px;
+  cursor: pointer;
+
+  & i {
+    margin-left: 8px;
+  }
 }
 
 .logo {

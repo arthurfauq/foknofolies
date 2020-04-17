@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 
 import { RootState } from 'reducers';
-import { LOGIN_SUCCESS, LOGIN_FAILURE } from 'reducers/auth';
+import { LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT } from 'reducers/auth';
 import { getMe, checkMember } from 'services/user';
 
 enum FBLoginResponseStatus {
@@ -13,6 +13,7 @@ const useLogin = (): {
   checkLoginState: () => Promise<void>;
   isAuthenticated: boolean;
   isAuthorized: boolean;
+  logout: () => void;
 } => {
   const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
   const isAuthorized = useSelector((state: RootState) => state.auth.isAuthorized);
@@ -33,7 +34,13 @@ const useLogin = (): {
     }
   };
 
-  return { checkLoginState, isAuthenticated, isAuthorized };
+  const logout = async (): Promise<void> => {
+    dispatch({ type: LOGOUT });
+
+    window.FB.logout();
+  };
+
+  return { checkLoginState, isAuthenticated, isAuthorized, logout };
 };
 
 export default useLogin;

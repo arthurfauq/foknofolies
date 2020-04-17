@@ -2,6 +2,7 @@ import { AnyAction } from 'redux';
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+export const LOGOUT = 'LOGOUT';
 
 type AuthState = {
   isAuthenticated: boolean;
@@ -22,6 +23,12 @@ const reducer = (state: AuthState = initialState, action: AnyAction): AuthState 
         isAuthorized: action.isAuthorized,
       };
     case LOGIN_FAILURE:
+      return {
+        ...state,
+        isAuthenticated: false,
+        isAuthorized: false,
+      };
+    case LOGOUT:
       return {
         ...state,
         isAuthenticated: false,
