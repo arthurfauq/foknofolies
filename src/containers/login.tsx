@@ -29,6 +29,7 @@ const Login = (): ReactElement => {
         language="fr_FR"
         textButton="Continuer avec Facebook"
         size="medium"
+        buttonStyle={{ margin: 8 }}
       />
       <div className="section-content">
         <div className="description-zone">

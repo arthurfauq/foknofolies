@@ -16,8 +16,8 @@ const Carousel = (): ReactElement => {
         autoWidth
         center
         navText={[
-          '<i className="fa fa-arrow-left" aria-hidden="true"></i>',
-          '<i className="fa fa-arrow-right" aria-hidden="true"></i>',
+          '<i class="fa fa-arrow-left" aria-hidden="true"></i>',
+          '<i class="fa fa-arrow-right" aria-hidden="true"></i>',
         ]}
         className="owl-carousel"
       >

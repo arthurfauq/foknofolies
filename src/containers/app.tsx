@@ -88,56 +88,32 @@ const initCountdown = () => {
   }, 500);
 };
 
-const onLeave = (origin, destination) => {
-  for (
-    let i = $('#logo-line')
-        .find('svg')
-        .children().length,
-      t = destination.index - 1,
-      a = t;
-    a < i;
-    a += 1
-  ) {
+type FullPageSection = {
+  anchor: string;
+  index: number;
+  item: Element;
+  isFirst: boolean;
+  isLast: boolean;
+};
+
+type FullPageDirection = 'up' | 'down';
+
+const onLeave = (origin: FullPageSection, destination: FullPageSection): void => {
+  const to = destination.index;
+
+  for (let i = 0; i < SECTIONS.length; i += 1) {
+    const opacity = to === 0 || i > to ? 0 : 0.35;
+
     $('#logo-line')
       .find('svg')
       .children()
-      .eq(a)
-      .css('opacity', 0);
-
-    for (let s = 0; s < t; s += 1) {
-      $('#logo-line')
-        .find('svg')
-        .children()
-        .eq(s)
-        .css('opacity', 0.35);
-      $('#logo-line')
-        .find('svg')
-        .children()
-        .eq(i - 1 - s)
-        .css('opacity', 0.35);
-    }
-  }
-
-  if (origin.index === 0) {
-    $('#accueil-section .background-image')
-      .eq(0)
-      .delay(500)
-      .removeClass('fadeInDown');
-  } else if (destination.index === 0) {
-    $('#accueil-section .background-image')
-      .eq(0)
-      .addClass('fadeInDown');
-  }
-
-  if (origin.index === SECTIONS.length - 1) {
-    $('#contact-section .background-image')
-      .eq(0)
-      .delay(500)
-      .removeClass('fadeInUp');
-  } else if (destination.index === SECTIONS.length - 1) {
-    $('#contact-section .background-image')
-      .eq(0)
-      .addClass('fadeInUp');
+      .eq(i)
+      .css('opacity', opacity);
+    $('#logo-line')
+      .find('svg')
+      .children()
+      .eq(i + 4)
+      .css('opacity', opacity);
   }
 };
 
@@ -152,6 +128,14 @@ const afterSlideLoad = () => {
   activeSlide.find('.description-icon').addClass('bounceIn');
 };
 
+const afterLoad = (origin: FullPageSection, destination: FullPageSection): void => {
+  afterSlideLoad();
+
+  $(destination.item)
+    .find('.background-image')
+    .addClass(destination.isFirst ? 'fadeInDown' : 'fadeInUp');
+};
+
 const App = (): ReactElement => {
   const [loading, setLoading] = useState(true);
   const isAuthorized = useSelector((state: RootState) => state.auth.isAuthorized);
@@ -159,11 +143,8 @@ const App = (): ReactElement => {
   useEffect(() => {
     if (!loading) {
       setTimeout(initCountdown, 500);
-      $('.background-image').on('load', function(this) {
-        $(this)
-          .delay(150)
-          .fadeIn();
-      });
+
+      $('.background-image').css('display', 'block');
     }
   }, [loading]);
 
@@ -172,9 +153,8 @@ const App = (): ReactElement => {
   }
 
   return (
-    <div>
+    <>
       <LoadingScreen isVisible={loading} onHide={() => setLoading(false)} />
-
       <ReactFullpage
         menu="#v-nav"
         css3={false}
@@ -192,7 +172,7 @@ const App = (): ReactElement => {
         fixedElements="#logo-line"
         normalScrollElements="#maps, .owl-item"
         onLeave={onLeave}
-        afterLoad={afterSlideLoad}
+        afterLoad={afterLoad}
         afterSlideLoad={afterSlideLoad}
         render={(): ReactElement => (
           <ReactFullpage.Wrapper>
@@ -228,7 +208,7 @@ const App = (): ReactElement => {
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 };
 

@@ -2,6 +2,7 @@
 
 .background-image {
   display: none;
+  opacity: 0;
   width: 100%;
   position: absolute;
   left: 0;
@@ -33,7 +34,8 @@
     font-size: 18px;
     line-height: 25px;
     width: 85%;
-    margin: 10px auto;
+    padding: 10px;
+    margin: auto;
   }
 }
 
@@ -119,6 +121,11 @@
   background: url(../../images/loader.gif) center no-repeat #000;
 }
 
+.login-button {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
 .logo {
   max-height: 70vh;
   width: auto;
@@ -178,7 +185,7 @@
 }
 
 .sub-title {
-  font-size: 1.4em;
+  font-size: 1.4rem;
   margin-bottom: 25px;
   line-height: 1em;
 }
@@ -219,7 +226,7 @@
 
 @media screen and (max-width: 992px) {
   .description-zone {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 
     hr {
       margin-top: 8px;
@@ -273,11 +280,11 @@
 
   .logo {
     max-height: 50vh;
-    margin-bottom: 5px;
+    margin-bottom: 32px;
   }
 
   .section-content {
-    width: 85%;
+    width: 80%;
 
     .description-zone {
       hr {
@@ -297,12 +304,13 @@
 
       .description-text {
         font-size: 15px;
-        margin: 7px auto;
+        line-height: 22px;
       }
     }
   }
 
   .sub-title {
+    font-size: 1.2rem;
     margin-bottom: 10px;
   }
 }
@@ -328,14 +336,8 @@
       }
 
       .description-text {
-        line-height: 19px;
-        margin: 5px auto;
         width: 90%;
       }
     }
-  }
-
-  .sub-title {
-    display: none;
   }
 }
