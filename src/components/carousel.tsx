@@ -14,6 +14,7 @@ const Carousel = (): ReactElement => {
         nav
         loop
         autoWidth
+        lazyLoad
         center
         navText={[
           '<i class="fa fa-arrow-left" aria-hidden="true"></i>',
@@ -21,26 +22,26 @@ const Carousel = (): ReactElement => {
         ]}
         className="owl-carousel"
       >
-        <img data-src={gallery.image25} alt="" />
-        <img data-src={gallery.image24} alt="" />
-        <img data-src={gallery.image18} alt="" />
-        <img data-src={gallery.image19} alt="" />
-        <img data-src={gallery.image1} alt="" />
-        <img data-src={gallery.image2} alt="" />
-        <img data-src={gallery.image3} alt="" />
-        <img data-src={gallery.image4} alt="" />
-        <img data-src={gallery.image22} alt="" />
-        <img data-src={gallery.image26} alt="" />
-        <img data-src={gallery.image27} alt="" />
-        <img data-src={gallery.image6} alt="" />
-        <img data-src={gallery.image10} alt="" />
-        <img data-src={gallery.image11} alt="" />
-        <img data-src={gallery.image20} alt="" />
-        <img data-src={gallery.image21} alt="" />
-        <img data-src={gallery.image12} alt="" />
-        <img data-src={gallery.image14} alt="" />
-        <img data-src={gallery.image15} alt="" />
-        <img data-src={gallery.image16} alt="" />
+        <img data-src={gallery.image25} alt="" className="owl-lazy" />
+        <img data-src={gallery.image24} alt="" className="owl-lazy" />
+        <img data-src={gallery.image18} alt="" className="owl-lazy" />
+        <img data-src={gallery.image19} alt="" className="owl-lazy" />
+        <img data-src={gallery.image1} alt="" className="owl-lazy" />
+        <img data-src={gallery.image2} alt="" className="owl-lazy" />
+        <img data-src={gallery.image3} alt="" className="owl-lazy" />
+        <img data-src={gallery.image4} alt="" className="owl-lazy" />
+        <img data-src={gallery.image22} alt="" className="owl-lazy" />
+        <img data-src={gallery.image26} alt="" className="owl-lazy" />
+        <img data-src={gallery.image27} alt="" className="owl-lazy" />
+        <img data-src={gallery.image6} alt="" className="owl-lazy" />
+        <img data-src={gallery.image10} alt="" className="owl-lazy" />
+        <img data-src={gallery.image11} alt="" className="owl-lazy" />
+        <img data-src={gallery.image20} alt="" className="owl-lazy" />
+        <img data-src={gallery.image21} alt="" className="owl-lazy" />
+        <img data-src={gallery.image12} alt="" className="owl-lazy" />
+        <img data-src={gallery.image14} alt="" className="owl-lazy" />
+        <img data-src={gallery.image15} alt="" className="owl-lazy" />
+        <img data-src={gallery.image16} alt="" className="owl-lazy" />
       </OwlCarousel>
     </div>
   );
