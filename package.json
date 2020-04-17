@@ -13,6 +13,7 @@
   "dependencies": {
     "@fullpage/react-fullpage": "^0.1.17",
     "animate.css": "^3.7.2",
+    "axios": "^0.19.2",
     "font-awesome": "^4.7.0",
     "moment": "^2.24.0",
     "node-sass": "^4.13.1",

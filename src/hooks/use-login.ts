@@ -2,22 +2,12 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { RootState } from 'reducers';
 import { LOGIN_SUCCESS, LOGIN_FAILURE } from 'reducers/auth';
-
-import members from '../members.json';
+import { getMe, checkMember } from 'services/user';
 
 enum FBLoginResponseStatus {
   CONNECTED = 'connected',
   UNAUTHORIZED = 'not_authorized',
 }
-
-type APIResponse = {
-  name: string;
-};
-
-const getMe = async (): Promise<APIResponse> =>
-  new Promise(resolve => {
-    window.FB.api('/me', resolve);
-  });
 
 const useLogin = (): {
   checkLoginState: () => Promise<void>;
@@ -35,8 +25,9 @@ const useLogin = (): {
 
     if (status === FBLoginResponseStatus.CONNECTED) {
       const { name } = await getMe();
+      const { isMember } = await checkMember(name);
 
-      dispatch({ type: LOGIN_SUCCESS, isAuthorized: members.includes(name) });
+      dispatch({ type: LOGIN_SUCCESS, isAuthorized: isMember });
     } else {
       dispatch({ type: LOGIN_FAILURE });
     }
