@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import FacebookLogin from 'react-facebook-login';
 
 import Page from 'components/page';
-import logo from 'images/logo-foknofolies.jpg';
+import logo from 'images/logo-foknofolies.svg';
 import useLogin from 'hooks/use-login';
 import { FB_APP_ID } from 'config';
 

@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 
 import Page from 'components/page';
-import logo from 'images/logo-foknofolies.jpg';
+import logo from 'images/logo-foknofolies.svg';
 
 const Unauthorized = (): ReactElement => {
   return (
