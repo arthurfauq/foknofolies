@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 
-import logoLines from 'images/logo-foknofolies-trace.png';
+import logoLines from 'images/logo-foknofolies-trace.svg';
 
 const Home = (): ReactElement => {
   return (
