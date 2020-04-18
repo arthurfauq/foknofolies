@@ -1,18 +1,13 @@
 import React, { ReactElement } from 'react';
 
-import backgroundReverseSmallImg from 'images/background-reverse-small.png';
-import backgroundReverseBigImg from 'images/background-reverse-big.png';
 import logoLines from 'images/logo-foknofolies-trace.png';
 
 const Home = (): ReactElement => {
   return (
     <>
-      <img
-        data-src={backgroundReverseSmallImg}
-        data-srcset={`${backgroundReverseBigImg} 1100w`}
-        className="background-image animated"
-        alt=""
-      />
+      <div className="background animated">
+        <div className="background-image" />
+      </div>
       <img src={logoLines} alt="" id="accueil-logo-lines" />
       <div className="section-content h-align">
         <div className="info-box">

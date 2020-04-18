@@ -107,51 +107,76 @@ ul {
   }
 }
 
-#accueil-section .container-fluid .section-content .info-box:first-child p:first-child,
-#accueil-section .container-fluid .section-content .info-box:first-child p:last-child {
-  font-size: 1em;
-  line-height: 0.5em;
+#accueil-section {
+  .background {
+    top: 0;
+
+    &-image {
+      transform: rotate(180deg);
+    }
+  }
+
+  .container-fluid {
+    .section-content {
+      .info-box {
+        &:first-child p:first-child,
+        &:first-child p:last-child {
+          font-size: 1em;
+          line-height: 0.5em;
+        }
+
+        &:first-child p:last-child {
+          line-height: 0.9em;
+        }
+      }
+    }
+  }
 }
 
-#accueil-section .container-fluid .section-content .info-box:first-child p:last-child {
-  line-height: 0.9em;
+#itineraire-section {
+  #maps-container {
+    width: 80%;
+    height: 45vh;
+    margin-bottom: 10px;
+
+    #maps {
+      width: 100%;
+      height: 100%;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+  }
 }
 
-#itineraire-section #maps-container {
-  width: 80%;
-  height: 45vh;
-  margin-bottom: 10px;
-}
+#contact-section {
+  .background {
+    bottom: 0;
+  }
 
-#itineraire-section #maps-container #maps {
-  width: 100%;
-  height: 100%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-}
+  .contact-zone {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 
-#contact-section .contact-zone {
-  margin: 10px 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
+    .description-zone {
+      .description-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
 
-#contact-section .contact-zone .description-zone,
-#contact-section .contact-zone .description-zone .description-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-#contact-section .contact-zone .description-zone .description-photo {
-  margin: 10px;
-  max-width: 150px;
-  max-height: 150px;
-  border-radius: 50%;
-  width: auto;
-  padding: 15px;
-  transition: all 0.3s;
+      .description-photo {
+        margin: 10px;
+        max-width: 150px;
+        max-height: 150px;
+        border-radius: 50%;
+        width: auto;
+        padding: 15px;
+        transition: all 0.3s;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -161,53 +186,43 @@ ul {
 }
 
 @media screen and (max-width: 768px) and (orientation: portrait) {
-  #accueil-section .background-image {
-    top: -18%;
-  }
-  #contact-section .background-image {
-    bottom: -18%;
-  }
-  #contact-section .contact-zone {
-    flex-direction: column;
-    margin: 0 0 25px;
-  }
-  #contact-section .contact-zone .description-zone {
-    margin: 1vh;
-  }
-  #contact-section .contact-zone .description-zone .description-content .description-text {
-    font-size: 13px;
-    margin: 0 !important;
-    line-height: 13px;
-  }
-  #contact-section .contact-zone .description-zone .description-photo {
-    margin: 2px;
-    max-width: 55px;
-    max-height: 55px;
-    padding: 0;
+  #contact-section {
+    .background {
+      height: 15vh;
+    }
+
+    .contact-zone {
+      flex-direction: column;
+      margin: 0 0 25px;
+
+      .description-zone {
+        margin: 1vh;
+
+        .description-content {
+          .description-text {
+            font-size: 13px;
+            margin: 0 !important;
+            line-height: 13px;
+          }
+        }
+
+        .description-photo {
+          margin: 2px;
+          max-width: 55px;
+          max-height: 55px;
+          padding: 0;
+        }
+      }
+    }
   }
 }
 
 @media screen and (max-width: 768px) and (orientation: landscape) {
-  #accueil-section .background-image {
-    top: -68%;
-  }
   .large-button {
     margin: 8px;
   }
   #itineraire-section .description-zone {
     display: none;
-  }
-  #contact-section .background-image {
-    bottom: -68%;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  #accueil-section .background-image {
-    top: -20%;
-  }
-  #contact-section .background-image {
-    bottom: -20%;
   }
 }
 
@@ -228,30 +243,12 @@ ul {
   }
 }
 
-@media screen and (min-width: 992px) {
-  #accueil-section .background-image {
-    top: -30%;
-  }
-  #contact-section .background-image {
-    bottom: -30%;
-  }
-}
-
 @media screen and (max-width: 1250px) {
   #itineraire-section #maps-container {
     width: 100%;
   }
   #contact-section .contact-zone {
     justify-content: space-between;
-  }
-}
-
-@media screen and (min-width: 1250px) {
-  #accueil-section .background-image {
-    top: -65%;
-  }
-  #contact-section .background-image {
-    bottom: -65%;
   }
 }
 

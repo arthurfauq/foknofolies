@@ -132,7 +132,7 @@ const afterLoad = (origin: FullPageSection, destination: FullPageSection): void 
   afterSlideLoad();
 
   $(destination.item)
-    .find('.background-image')
+    .find('.background')
     .addClass(destination.isFirst ? 'fadeInDown' : 'fadeInUp');
 };
 
@@ -144,7 +144,7 @@ const App = (): ReactElement => {
     if (!loading) {
       setTimeout(initCountdown, 500);
 
-      $('.background-image').css('display', 'block');
+      $('.background').css('display', 'block');
     }
   }, [loading]);
 

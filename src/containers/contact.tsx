@@ -1,7 +1,5 @@
 import React, { ReactElement } from 'react';
 
-import backgroundSmallImg from 'images/background-small.png';
-import backgrounBigImg from 'images/background-big.png';
 import arthurImg from 'images/arthur.jpg';
 import gaspardImg from 'images/gaspard.jpg';
 import camilleImg from 'images/camille.jpg';
@@ -16,12 +14,9 @@ const Contact = (): ReactElement => {
 
   return (
     <>
-      <img
-        data-src={backgroundSmallImg}
-        data-srcset={`${backgrounBigImg} 1100w`}
-        className="background-image animated"
-        alt=""
-      />
+      <div className="background animated">
+        <div className="background-image" />
+      </div>
       <div className="section-content">
         <h2>Contact</h2>
         <div className="contact-zone">
