@@ -1,4 +1,5 @@
 import React, { ReactElement, useEffect, useRef, useState, useCallback } from 'react';
+import axios from 'axios';
 
 import balloonsIcon from 'images/balloons.png';
 
@@ -48,13 +49,10 @@ const Map = (): ReactElement => {
   }, [pos]);
 
   const tryAPIGeolocation = () => {
-    $.ajax({
-      type: 'POST',
-      url: `https://www.googleapis.com/geolocation/v1/geolocate?key=${key}`,
-      success: location => {
-        setPos({ lat: location.location.lat, lng: location.location.lng });
-      },
-    });
+    axios
+      .post(`https://www.googleapis.com/geolocation/v1/geolocate?key=${key}`)
+      .then(({ data: location }) => setPos({ lat: location.location.lat, lng: location.location.lng }))
+      .catch(error => console.log(error));
   };
 
   const handleLocationError = useCallback(

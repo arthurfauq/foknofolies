@@ -2,6 +2,7 @@ import ReactFullpage from '@fullpage/react-fullpage';
 import moment from 'moment';
 import React, { ReactElement, useEffect, useState, ElementType } from 'react';
 import { useSelector } from 'react-redux';
+import $ from 'jquery';
 
 import Page from 'components/page';
 import Activities from 'containers/activities';
@@ -96,8 +97,6 @@ type FullPageSection = {
   isLast: boolean;
 };
 
-type FullPageDirection = 'up' | 'down';
-
 const onLeave = (origin: FullPageSection, destination: FullPageSection): void => {
   const to = destination.index;
 
@@ -165,7 +164,7 @@ const App = (): ReactElement => {
         fitToSection
         controlArrows
         slidesNavigation
-        lazyLoading
+        lazyLoading={false}
         slidesNavPosition="bottom"
         verticalCentered={false}
         sectionSelector=".section"

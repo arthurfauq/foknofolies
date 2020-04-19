@@ -9,6 +9,15 @@ import rootReducer from 'reducers';
 
 import './styles/main.scss';
 
+declare global {
+  interface Window {
+    fbAsyncInit: () => void;
+    FB: fb.FacebookStatic;
+    jQuery: JQueryStatic;
+    $: JQueryStatic;
+  }
+}
+
 const store = createStore(rootReducer);
 
 ReactDOM.render(

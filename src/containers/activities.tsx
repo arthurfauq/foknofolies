@@ -1,4 +1,5 @@
 import React, { ReactElement, useEffect } from 'react';
+import $ from 'jquery';
 
 import targetIcon from 'images/target.svg';
 import rocketIcon from 'images/rocket.svg';

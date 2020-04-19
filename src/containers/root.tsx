@@ -8,12 +8,18 @@ import PrivateRoute from 'containers/private-route';
 import useLogin from 'hooks/use-login';
 import Loader from 'components/loader';
 
-declare global {
-  interface Window {
-    fbAsyncInit: any;
-    FB: any;
-  }
-}
+const loadFbSdk = () => {
+  // Load the SDK asynchronously
+  const id = 'facebook-jssdk';
+  const fjs = document.querySelectorAll('script')[0];
+
+  if (document.querySelector(`#${id}`)) return;
+  const js: HTMLScriptElement = document.createElement('script');
+
+  js.id = id;
+  js.src = '//connect.facebook.net/fr_FR/sdk.js';
+  fjs?.parentNode?.insertBefore(js, fjs);
+};
 
 const Root = (): ReactElement => {
   const [initialized, setInitialized] = useState(false);
@@ -30,22 +36,11 @@ const Root = (): ReactElement => {
         .then(() => setInitialized(true))
         .catch(error => console.log(error));
     };
-
-    // Load the SDK asynchronously
-    ((d, s, id): void => {
-      const fjs = d.querySelectorAll(s)[0];
-
-      if (d.querySelector(`#${id}`)) return;
-      const js: any = d.createElement(s);
-
-      js.id = id;
-      js.src = '//connect.facebook.net/fr_FR/sdk.js';
-      fjs?.parentNode?.insertBefore(js, fjs);
-    })(document, 'script', 'facebook-jssdk');
   };
 
   useEffect(() => {
     loadFBLoginApi();
+    loadFbSdk();
   }, []);
 
   if (!initialized) {

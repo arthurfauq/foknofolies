@@ -1,36 +1,56 @@
-import React, { ReactElement, memo } from 'react';
-import OwlCarousel from 'react-owl-carousel';
+import React, { ReactElement, memo, useRef, useEffect } from 'react';
+import $ from 'jquery';
 
 import gallery from 'images/gallery';
 
+window.$ = $;
+window.jQuery = $;
+
+require('owl.carousel');
+
+const options: OwlCarousel.Options = {
+  items: 2,
+  startPosition: 0,
+  margin: 24,
+  stagePadding: 16,
+  nav: true,
+  loop: true,
+  lazyLoad: true,
+  lazyLoadEager: 1,
+  center: true,
+  navText: [
+    '<i class="fa fa-arrow-left" aria-hidden="true"></i>',
+    '<i class="fa fa-arrow-right" aria-hidden="true"></i>',
+  ],
+  responsive: {
+    0: {
+      dots: false,
+    },
+    768: {
+      dots: true,
+    },
+  },
+};
+
 const Carousel = (): ReactElement => {
+  const container = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (container?.current) {
+      $(container.current).owlCarousel(options);
+    }
+  }, []);
+
   return (
     <div className="owl-container">
-      <OwlCarousel
-        items={1}
-        startPosition={0}
-        margin={25}
-        stagePadding={25}
-        nav
-        loop
-        autoWidth
-        lazyLoad
-        center
-        navText={[
-          '<i class="fa fa-arrow-left" aria-hidden="true"></i>',
-          '<i class="fa fa-arrow-right" aria-hidden="true"></i>',
-        ]}
-        className="owl-carousel"
-      >
+      <div className="owl-carousel" ref={container}>
         <img data-src={gallery.image25} alt="" className="owl-lazy" />
         <img data-src={gallery.image24} alt="" className="owl-lazy" />
-        <img data-src={gallery.image18} alt="" className="owl-lazy" />
         <img data-src={gallery.image19} alt="" className="owl-lazy" />
         <img data-src={gallery.image1} alt="" className="owl-lazy" />
         <img data-src={gallery.image2} alt="" className="owl-lazy" />
         <img data-src={gallery.image3} alt="" className="owl-lazy" />
         <img data-src={gallery.image4} alt="" className="owl-lazy" />
-        <img data-src={gallery.image22} alt="" className="owl-lazy" />
         <img data-src={gallery.image26} alt="" className="owl-lazy" />
         <img data-src={gallery.image27} alt="" className="owl-lazy" />
         <img data-src={gallery.image6} alt="" className="owl-lazy" />
@@ -42,7 +62,7 @@ const Carousel = (): ReactElement => {
         <img data-src={gallery.image14} alt="" className="owl-lazy" />
         <img data-src={gallery.image15} alt="" className="owl-lazy" />
         <img data-src={gallery.image16} alt="" className="owl-lazy" />
-      </OwlCarousel>
+      </div>
     </div>
   );
 };
