@@ -24,6 +24,7 @@ const options: OwlCarousel.Options = {
   ],
   responsive: {
     0: {
+      items: 1,
       dots: false,
     },
     768: {
