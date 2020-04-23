@@ -1,6 +1,4 @@
-#full-page {
-  display: none;
-
+#fullpage {
   .fp-controlArrow {
     margin-top: -12px;
 
@@ -25,17 +23,15 @@
 }
 
 @media screen and (max-width: 768px) {
-  #full-page {
+  #fullpage {
     .fp-controlArrow {
-      margin-top: -12px;
-
       &.fp-prev {
-        left: -5px;
+        left: 0;
         border-width: 12px 12px 12px 0;
       }
 
       &.fp-next {
-        right: -5px;
+        right: 0;
         border-width: 12px 0 12px 12px;
       }
     }

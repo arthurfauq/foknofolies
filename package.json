@@ -1,73 +1,74 @@
 {
+  "name": "foknofolies",
   "version": "5.0.0",
-  "main": "gulpfile.js",
   "scripts": {
-    "start": "gulp",
-    "build": "gulp build",
-    "serve:dist": "gulp serve",
-    "deploy": "npm run build && gh-pages -d dist",
-    "lint": "eslint . --ignore-path .gitignore && stylelint \"src/**/*.scss\" && prettier --ignore-path .gitignore --check \"**/*.{html,css,scss,js,json,md}\"",
-    "lint:fix": "eslint . --ignore-path .gitignore --fix && stylelint \"src/**/*.scss\" --fix && prettier --ignore-path .gitignore --write \"**/*.{html,css,scss,js,json,md}\""
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.scss": [
-      "stylelint --fix",
-      "git add"
-    ],
-    "*.{html,css,scss,js,json,md}": [
-      "prettier --write",
-      "git add"
-    ]
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "tsc --p ./ && eslint \"./src/**/*.{ts,tsx}\" && prettier --check \"**/*.{json,html,css,md}\"",
+    "lint:fix": "tsc --p ./ && eslint \"./src/**/*.{ts,tsx}\" --fix && prettier --write \"**/*.{json,html,css,md}\"",
+    "pre-commit": "lint-staged"
   },
   "dependencies": {
+    "@fullpage/react-fullpage": "^0.1.17",
     "animate.css": "^3.7.2",
+    "axios": "^0.19.2",
     "font-awesome": "^4.7.0",
-    "fullpage.js": "2.9.7",
-    "jquery": "^3.4.1",
-    "jquery.waitforimages": "^2.4.0",
+    "jquery": "^3.5.0",
+    "lazysizes": "^5.2.0",
     "moment": "^2.24.0",
-    "owl.carousel": "^2.3.4"
+    "node-sass": "^4.13.1",
+    "owl.carousel": "^2.3.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-facebook-login": "^4.1.1",
+    "react-owl-carousel": "^2.3.1",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.0",
+    "redux": "^4.0.5",
+    "typescript": "^3.8.3"
   },
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
+    "@types/facebook-js-sdk": "^3.3.0",
     "@types/googlemaps": "^3.39.3",
-    "browser-sync": "^2.26.7",
-    "del": "^3.0.0",
-    "eslint": "^5.16.0",
-    "eslint-config-airbnb-base": "^13.2.0",
-    "eslint-config-prettier": "^3.3.0",
-    "eslint-plugin-import": "^2.20.2",
+    "@types/jquery": "^3.3.35",
+    "@types/node": "^13.9.8",
+    "@types/owl.carousel": "^2.3.1",
+    "@types/react": "^16.9.30",
+    "@types/react-dom": "^16.9.5",
+    "@types/react-facebook-login": "^4.1.1",
+    "@types/react-redux": "^7.1.7",
+    "@types/react-router-dom": "^5.1.3",
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "@typescript-eslint/parser": "^2.26.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-typescript": "^7.2.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-import-resolver-typescript": "^2.0.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^3.0.0",
+    "eslint-plugin-unicorn": "^18.0.1",
     "gh-pages": "^2.2.0",
-    "gulp": "^4.0.2",
-    "gulp-autoprefixer": "^3.1.1",
-    "gulp-babel": "^8.0.0",
-    "gulp-clean": "^0.4.0",
-    "gulp-cssnano": "^2.1.3",
-    "gulp-if": "^2.0.2",
-    "gulp-rename": "^1.4.0",
-    "gulp-sass": "^3.1.0",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-uglify": "^2.1.2",
-    "gulp-useref": "^3.1.2",
-    "gulp-util": "^3.0.8",
-    "husky": "^1.2.0",
-    "lint-staged": "^8.2.1",
-    "prettier": "^1.19.1",
-    "run-sequence": "^1.2.2",
-    "stylelint": "^9.8.0",
-    "stylelint-config-prettier": "^5.3.0",
-    "stylelint-config-standard": "^18.3.0"
+    "husky": "^4.2.3",
+    "lint-staged": "^10.1.0",
+    "prettier": "^1.19.1"
   },
-  "license": "MIT"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "private": true
 }

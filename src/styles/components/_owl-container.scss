@@ -1,16 +1,16 @@
 .owl-container {
-  background: url(../img/tail-spin.svg) no-repeat center;
-
   .owl-carousel {
-    .owl-item {
-      img {
-        width: auto;
-        height: 65vh;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-      }
+    .owl-stage {
+      .owl-item {
+        .item {
+          img {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+          }
+        }
 
-      &:hover {
-        cursor: grab;
+        &:hover {
+          cursor: grab;
+        }
       }
     }
 
@@ -18,10 +18,11 @@
       text-align: center;
 
       button {
+        outline: none;
         display: inline-block;
         margin: 15px 20px;
         font-size: 2em;
-        color: #333;
+        color: rgba(51, 51, 51, 0.9);
       }
     }
 
@@ -46,15 +47,9 @@
 
 @media screen and (max-width: 768px) {
   .owl-container {
+    padding-top: 8px;
+
     .owl-carousel {
-      .owl-item img {
-        max-height: 50vh;
-      }
-
-      .owl-dots {
-        display: none;
-      }
-
       .owl-nav button {
         margin: 7px 14px;
       }

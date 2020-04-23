@@ -1,9 +1,24 @@
 // Declare here your custom SASS classes
 
-.background-image {
+.background {
+  opacity: 0;
+  display: none;
+  width: 100%;
+  height: 30vh;
   position: absolute;
   left: 0;
-  width: 100%;
+
+  &-image {
+    height: 100%;
+    background-image: url(../../images/mountains.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+.container-fluid {
+  height: 100%;
+  position: relative;
 }
 
 .description-zone {
@@ -27,7 +42,8 @@
     font-size: 18px;
     line-height: 25px;
     width: 85%;
-    margin: 10px auto;
+    padding: 10px;
+    margin: auto;
   }
 }
 
@@ -49,7 +65,7 @@
   display: none;
   flex-direction: column;
   justify-content: center;
-  width: 180px;
+  min-width: 180px;
   height: 180px;
   border-radius: 180px;
   border: 1px solid rgba(0, 0, 0, 0.4);
@@ -110,7 +126,17 @@
   width: 100%;
   height: 100%;
   z-index: 1000;
-  background: url(../img/loader.gif) center no-repeat #000;
+  background: url(../../images/loader.gif) center no-repeat #000;
+}
+
+.logout-button {
+  position: absolute;
+  bottom: 8px;
+  cursor: pointer;
+
+  & i {
+    margin-left: 8px;
+  }
 }
 
 .logo {
@@ -172,7 +198,7 @@
 }
 
 .sub-title {
-  font-size: 1.5em;
+  font-size: 1.4rem;
   margin-bottom: 25px;
   line-height: 1em;
 }
@@ -201,7 +227,7 @@
     width: 70%;
   }
   .info-box {
-    width: 150px;
+    min-width: 150px;
     height: 150px;
     border-radius: 150px;
 
@@ -213,7 +239,7 @@
 
 @media screen and (max-width: 992px) {
   .description-zone {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 
     hr {
       margin-top: 8px;
@@ -249,7 +275,7 @@
 
 @media screen and (max-width: 768px) {
   .info-box {
-    width: 100px;
+    min-width: 100px;
     height: 100px;
     border-radius: 100px;
 
@@ -267,11 +293,11 @@
 
   .logo {
     max-height: 50vh;
-    margin-bottom: 5px;
+    margin-bottom: 32px;
   }
 
   .section-content {
-    width: 85%;
+    width: 80%;
 
     .description-zone {
       hr {
@@ -291,12 +317,13 @@
 
       .description-text {
         font-size: 15px;
-        margin: 7px auto;
+        line-height: 22px;
       }
     }
   }
 
   .sub-title {
+    font-size: 1.2rem;
     margin-bottom: 10px;
   }
 }
@@ -322,14 +349,8 @@
       }
 
       .description-text {
-        line-height: 19px;
-        margin: 5px auto;
         width: 90%;
       }
     }
-  }
-
-  .sub-title {
-    display: none;
   }
 }

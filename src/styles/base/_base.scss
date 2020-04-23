@@ -5,9 +5,9 @@
   text-align: center;
 }
 
-.container-fluid,
+html,
 body,
-html {
+#root {
   height: 100%;
 }
 
@@ -15,7 +15,6 @@ body {
   margin: 0;
   font-family: Raleway, sans-serif;
   font-weight: 300;
-  background-color: #fdfdfd;
 }
 
 body,
@@ -33,6 +32,29 @@ a:focus,
 a:hover {
   text-decoration: none;
   color: inherit;
+}
+
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
+
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
+
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
 }
 
 h1 {
@@ -56,7 +78,7 @@ ul {
   }
   h2 {
     font-size: 2.4em;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
   }
 }
 
@@ -66,11 +88,10 @@ ul {
   }
   h2 {
     font-size: 2em;
-    margin-bottom: 5px;
   }
 }
 
-#accueil-section .container-fluid img {
+#accueil-logo-lines {
   max-height: 60vh;
   width: auto;
   max-width: 60vw;
@@ -86,59 +107,76 @@ ul {
   }
 }
 
-#accueil-section .container-fluid .section-content .info-box:first-child p:first-child,
-#accueil-section .container-fluid .section-content .info-box:first-child p:last-child {
-  font-size: 1em;
-  line-height: 0.5em;
+#accueil-section {
+  .background {
+    top: 0;
+
+    &-image {
+      transform: rotate(180deg);
+    }
+  }
+
+  .container-fluid {
+    .section-content {
+      .info-box {
+        &:first-child p:first-child,
+        &:first-child p:last-child {
+          font-size: 1em;
+          line-height: 0.5em;
+        }
+
+        &:first-child p:last-child {
+          line-height: 0.9em;
+        }
+      }
+    }
+  }
 }
 
-#accueil-section .container-fluid .section-content .info-box:first-child p:last-child {
-  line-height: 0.9em;
+#itineraire-section {
+  #maps-container {
+    width: 80%;
+    height: 45vh;
+    margin-bottom: 10px;
+
+    #maps {
+      width: 100%;
+      height: 100%;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+  }
 }
 
-#itineraire-section #maps-loading {
-  width: 80%;
-  height: 45vh;
-  background: url(../img/tail-spin.svg) no-repeat center;
-}
+#contact-section {
+  .background {
+    bottom: 0;
+  }
 
-#itineraire-section #maps-loading #maps {
-  width: 100%;
-  height: 100%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-}
+  .contact-zone {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 
-#programme-section .description-zone .playlist {
-  height: 30vh;
-}
+    .description-zone {
+      .description-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
 
-#contact-section .contact-zone {
-  margin: 10px 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-#contact-section .contact-zone .description-zone,
-#contact-section .contact-zone .description-zone .description-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-#contact-section .contact-zone .description-zone .description-photo {
-  margin: 10px;
-  max-width: 150px;
-  max-height: 150px;
-  border-radius: 50%;
-  width: auto;
-  padding: 15px;
-  transition: all 0.3s;
-}
-
-#contact-section .contact-zone .description-zone .description-photo:hover {
-  padding: 0;
+      .description-photo {
+        margin: 10px;
+        max-width: 150px;
+        max-height: 150px;
+        border-radius: 50%;
+        width: auto;
+        padding: 15px;
+        transition: all 0.3s;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -148,56 +186,43 @@ ul {
 }
 
 @media screen and (max-width: 768px) and (orientation: portrait) {
-  #accueil-section .background-image {
-    top: -18%;
-  }
-  #contact-section .background-image {
-    bottom: -18%;
-  }
-  #contact-section .contact-zone {
-    flex-direction: column;
-    margin: 0 0 25px;
-  }
-  #contact-section .contact-zone .description-zone {
-    margin: 1vh;
-  }
-  #contact-section .contact-zone .description-zone .description-content .description-text {
-    font-size: 13px;
-    margin: 0 !important;
-    line-height: 13px;
-  }
-  #contact-section .contact-zone .description-zone .description-photo {
-    margin: 2px;
-    max-width: 55px;
-    max-height: 55px;
-    padding: 0;
-  }
-  #contact-section .contact-zone .description-zone .description-photo:hover {
-    padding: 0;
+  #contact-section {
+    .background {
+      height: 15vh;
+    }
+
+    .contact-zone {
+      flex-direction: column;
+      margin: 0 0 25px;
+
+      .description-zone {
+        margin: 1vh;
+
+        .description-content {
+          .description-text {
+            font-size: 13px;
+            margin: 0 !important;
+            line-height: 13px;
+          }
+        }
+
+        .description-photo {
+          margin: 2px;
+          max-width: 55px;
+          max-height: 55px;
+          padding: 0;
+        }
+      }
+    }
   }
 }
 
 @media screen and (max-width: 768px) and (orientation: landscape) {
-  #accueil-section .background-image {
-    top: -68%;
-  }
   .large-button {
     margin: 8px;
   }
   #itineraire-section .description-zone {
     display: none;
-  }
-  #contact-section .background-image {
-    bottom: -68%;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  #accueil-section .background-image {
-    top: -20%;
-  }
-  #contact-section .background-image {
-    bottom: -20%;
   }
 }
 
@@ -216,22 +241,10 @@ ul {
     max-height: 80px;
     padding: 5px;
   }
-  #contact-section .contact-zone .description-zone .description-photo:hover {
-    padding: 5px;
-  }
-}
-
-@media screen and (min-width: 992px) {
-  #accueil-section .background-image {
-    top: -30%;
-  }
-  #contact-section .background-image {
-    bottom: -30%;
-  }
 }
 
 @media screen and (max-width: 1250px) {
-  #itineraire-section #maps-loading {
+  #itineraire-section #maps-container {
     width: 100%;
   }
   #contact-section .contact-zone {
@@ -239,17 +252,8 @@ ul {
   }
 }
 
-@media screen and (min-width: 1250px) {
-  #accueil-section .background-image {
-    top: -65%;
-  }
-  #contact-section .background-image {
-    bottom: -65%;
-  }
-}
-
 #logo-animation {
-  display: none;
+  display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -266,8 +270,23 @@ ul {
   position: absolute;
   right: 4%;
   bottom: 16px;
-  font-size: 1.6em;
+  font-size: 1.4em;
+  font-family: Raleway, sans-serif;
   color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  display: inline;
+  margin: 0;
+  padding: 0;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+    border: none;
+    outline: none;
+  }
 }
 
 @media screen and (max-width: 768px) {
