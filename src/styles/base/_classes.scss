@@ -80,7 +80,6 @@
 
 .large-button {
   margin-top: 10px;
-  width: 170px;
   height: 50px;
   color: rgba(255, 255, 255, 0.89);
   background-color: #333;
@@ -89,8 +88,8 @@
   border-radius: 8px;
   line-height: 1.2em;
   font-size: 1.4em;
-  letter-spacing: 3px;
-  padding: 12px;
+  letter-spacing: 2px;
+  padding: 12px 24px;
   text-transform: uppercase;
   transition: all 0.15s;
   font-weight: 400;
@@ -285,10 +284,10 @@
   }
 
   .large-button {
-    width: 140px;
     height: 40px;
     font-size: 1.2em;
-    padding: 8px;
+    padding: 8px 16px;
+    letter-spacing: 1px;
   }
 
   .logo {
